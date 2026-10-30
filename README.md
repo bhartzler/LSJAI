@@ -4,7 +4,7 @@ LSJAI is Helma Dik's **LSJLogeion**, the Perseus LSJ as edited for Logeion at Ch
 
 The point is the iteration. AI readers compare the text with a second copy and, in doubt, with the printed page; a second reader checks; an agent applies what holds; the next pass starts from the result. What a pass got wrong is in a table where anyone can see it, and better readers will find what this one missed. Each pass is meant to leave the dictionary cleaner than it found it, and the table is how to check that it did. No person read the entries; Bruce Hartzler directs the work and chooses what to publish.
 
-The readers compared Logeion's text of each entry with a second digital copy of the dictionary (copy B: a plain-text LSJ a colleague gave Bruce Hartzler in 2020, found online, source not remembered; it is not ours to publish, so it is not named or quoted here), and said which of the two has the print, going in doubtful cases to images of the printed page and the 1968 Supplement; a second reader checked about a fifth of the answers blind and reviewed the disagreements against the sources; what the checks upheld was applied by a tool. Copy B is not an independent typing: it descends from the same Perseus digitization as Logeion, corrected in many places by hands unknown (`METHOD.md`, "The witnesses"). The comparison therefore finds only the places where the two copies disagree; an error they share is not found by it. `METHOD.md` says how, with the counts.
+The readers compared Logeion's text of each entry with a second digital copy of the dictionary (copy B: the plain-text LSJ posted anonymously on the Internet Archive on 8 Apr 2017 as the item Lsj--LiddellScott, in the copy a colleague made in 2020 with 153 typo fixes), and said which of the two has the print, going in doubtful cases to images of the printed page and the 1968 Supplement; a second reader checked about a fifth of the answers blind and reviewed the disagreements against the sources; what the checks upheld was applied by a tool. Copy B is not an independent typing: it descends from the same Perseus digitization as Logeion, corrected in many places by hands unknown (`METHOD.md`, "The witnesses"). The comparison therefore finds only the places where the two copies disagree; an error they share is not found by it. `METHOD.md` says how, with the counts.
 
 ## What is here
 
@@ -15,7 +15,7 @@ The readers compared Logeion's text of each entry with a second digital copy of 
 
 ## Limits
 
-- Copy B's provenance is unknown. It shares Perseus's keyboarding errors, so an error the two copies share is not found by comparing them; the corrections are a floor.
+- Copy B shares Perseus's keyboarding errors, so an error the two copies share is not found by comparing them; the corrections are a floor. A later pass can read against another witness.
 - No person proofread the entries or the corrections one by one. Each correction's evidence is in the table; the readers' certainty is a column.
 - 81 corrections the readers established are held, not applied; in 21 entries a later Logeion edit is kept over ours.
 - The citation readings name lines in the numbering of one edition of each text, the one the project holds, which may differ from the edition a reader has.
