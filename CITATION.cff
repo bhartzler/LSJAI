@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use these corrections, readings or glosses, please cite this repository, and credit Perseus (Tufts University) and Helma Dik / Logeion (University of Chicago) for the dictionary text they rest on."
+type: dataset
+title: "LSJAI: the Liddell-Scott-Jones lexicon as edited for Logeion, with corrections read by AI readers and their evidence"
+authors:
+  - family-names: Hartzler
+    given-names: Bruce
+license: CC-BY-SA-4.0
+repository-code: "https://github.com/bhartzler/LSJAI"
+date-released: "2026-10-30"
+version: "2026-10-30"
+abstract: "A fork of LSJLogeion (Helma Dik, University of Chicago), the Perseus LSJ as edited for Logeion, with 1,228 corrections to the dictionary's text read by AI readers against a second digital copy and, in doubtful cases, the printed dictionary, checked by a second AI reader and applied by an AI agent, each recorded with its evidence; 41,612 readings of the entries' citations against the texts cited; and 2,481 short meanings. METHOD.md says how it was made."
+keywords:
+  - Greek lexicon
+  - Liddell-Scott-Jones
+  - LSJ
+  - Logeion
+  - Perseus
+  - corrections
+  - citations
+references:
+  - type: software
+    title: "LSJLogeion"
+    authors:
+      - family-names: Dik
+        given-names: Helma
+    repository-code: "https://github.com/helmadik/LSJLogeion"
+    license: CC-BY-SA-4.0
+  - type: data
+    title: "A Greek-English Lexicon (Liddell, Scott, Jones), the Perseus Digital Library's digitization"
+    authors:
+      - name: "Perseus Digital Library, Tufts University"
+    repository-code: "https://github.com/PerseusDL/lexica"
