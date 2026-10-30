@@ -1,0 +1,86 @@
+line	batch	status	why	old	new	pass
+11542	since	head followed	orth_orig ἁπάντη -> ἁπάντῃ	ἁπάντη	ἁπάντῃ	29 Oct 2026, the last rounds
+12260	since	head kept	the text Ἆπις did not read as orth_orig Ἀπις before; now Ἆπις			29 Oct 2026, the last rounds
+12288	since	head followed	orth_orig ἀπλαῖ -> ἁπλαῖ	ἀπλαῖ	ἁπλαῖ	29 Oct 2026, the last rounds
+12311	since	head followed	orth_orig ἀπλήγιος -> ἁπλήγιος	ἀπλήγιος	ἁπλήγιος	29 Oct 2026, the last rounds
+12350	since	head kept	the text Ἄπλουν did not read as orth_orig Ἀπλουν before; now Ἄπλουν			29 Oct 2026, the last rounds
+13077	since	head kept	the text ἀποκρημνίζω did not read as orth_orig ἀπο-κρημνιζω before; now ἀπο-κρημνίζω			29 Oct 2026, the last rounds
+13784	since	head kept	the text ἆπος did not read as orth_orig ἀπος before; now ἆπος			29 Oct 2026, the last rounds
+14105	since	head kept	the text ἀποσωμάτωσις did not read as orth_orig ἀποσωματωσις before; now ἀποσωμάτωσις			29 Oct 2026, the last rounds
+14920	since	head kept	the text ἀργίκερως did not read as orth_orig ἀργῐ-κερως before; now ἀργῐ-κέρως			29 Oct 2026, the last rounds
+15026	since	head kept	the text ἀργύροφλεψ did not read as orth_orig ἀργῠρο-φλεψ before; now ἀργῠρό-φλεψ			29 Oct 2026, the last rounds
+16110	since	head followed	orth_orig ἀρχί-μῑμος -> ἀρχι-μῖμος	ἀρχίμιμος	ἀρχιμῖμος	29 Oct 2026, the last rounds
+17002	since	head followed	orth_orig ἀσφάλ-ειος -> Ἀσφάλ-ειος	ἀσφάλειος	Ἀσφάλειος	29 Oct 2026, the last rounds
+17907	since	head followed	orth_orig αὔτο-κρας -> αὐτό-κρας	αὔτοκρας	αὐτόκρας	29 Oct 2026, the last rounds
+18112	since	head kept	the printed form took a grave; the headword keeps its acute; orth_orig αὐτο-τρᾰγικός -> αὐτο-τρᾰγικὸς	αὐτοτραγικός	αὐτοτραγικὸς	29 Oct 2026, the last rounds
+19287	since	head followed	orth_orig βαιῶτις -> Βαιῶτις	βαιῶτις	Βαιῶτις	29 Oct 2026, the last rounds
+19405	since	head followed	orth_orig βάληος -> Βάληος	βάληος	Βάληος	29 Oct 2026, the last rounds
+19896	since	head followed	orth_orig βέη -> βέῃ	βέη	βέῃ	29 Oct 2026, the last rounds
+19955	since	head followed	orth_orig βερβεία -> Βερβεία	βερβεία	Βερβεία	29 Oct 2026, the last rounds
+20052	since	head kept	the text Βιβλιαίγισθος did not read as orth_orig βιβλι-αιγισθος before; now βιβλι-αίγισθος			29 Oct 2026, the last rounds
+20670	since	head followed	orth_orig βου-ζύγης -> Βου-ζύγης	βουζύγης	Βουζύγης	29 Oct 2026, the last rounds
+20690	since	head followed	orth_orig βουκάτιος -> Βουκάτιος	βουκάτιος	Βουκάτιος	29 Oct 2026, the last rounds
+20742	since	head followed	orth_orig βουλ-εύς -> Βουλ-εύς	βουλεύς	Βουλεύς	29 Oct 2026, the last rounds
+20829	since	head followed	orth_orig βούσβατον· -> Βούσβατον·	βούσβατον	Βούσβατον	29 Oct 2026, the last rounds
+20949	since	head kept	the text βραδύπορος did not read as orth_orig βρᾰδῠ-πορος before; now βρᾰδῠ-πόρος			29 Oct 2026, the last rounds
+21191	since	head followed	orth_orig βροντ-ήσιος -> Βροντ-ήσιος	βροντήσιος	Βροντήσιος	29 Oct 2026, the last rounds
+21515	since	head kept	a letter entry: its text is the letter; orth_orig γ -> Γγ	γ	Γγ	29 Oct 2026, the last rounds
+21566	since	head followed	orth_orig γαιθυλα -> γαίθυλα	γαιθυλα	γαίθυλα	29 Oct 2026, the last rounds
+22635	since	head followed	orth_orig γνάθ-ων -> Γνάθ-ων	γνάθων	Γνάθων	29 Oct 2026, the last rounds
+23315	since	head kept	a letter entry: its text is the letter; orth_orig δ -> Δδ	δ	Δδ	29 Oct 2026, the last rounds
+23360	since	head kept	the text δαΐ did not read as orth_orig δᾰϊ before; now δᾰΐ			29 Oct 2026, the last rounds
+23682	since	head kept	the text δασυλλίς did not read as orth_orig δᾰσυλλις before; now δᾰσυλλίς			29 Oct 2026, the last rounds
+24648	since	head followed	orth_orig δηόω -> δῃόω	δηόω	δῃόω	29 Oct 2026, the last rounds
+24738	since	head followed	orth_orig διαβούλ-οι· -> διάβουλ-οι·	διαβούλοι	διάβουλοι	29 Oct 2026, the last rounds
+25324	since	head kept	the text δίαλμα did not read as orth_orig διαλμα before; now δίαλμα			29 Oct 2026, the last rounds
+26345	since	head kept	the text διάφαρος did not read as orth_orig διαφαρος before; now διάφαρος			29 Oct 2026, the last rounds
+26405	since	head kept	the text δίαφρος did not read as orth_orig διαφρος before; now δίαφρος			29 Oct 2026, the last rounds
+27826	since	head kept	the text διχόθεν did not read as orth_orig δῐχο-θεν before; now δῐχό-θεν			29 Oct 2026, the last rounds
+27948	since	head followed	orth_orig δίωσ-τρα -> διώσ-τρα	δίωστρα	διώστρα	29 Oct 2026, the last rounds
+28108	since	head followed	orth_orig δολόφον-ος -> δολοφόν-ος	δολόφονος	δολοφόνος	29 Oct 2026, the last rounds
+28749	since	head followed	orth_orig δυνδεκάτη· -> δυνδεκάτῃ·	δυνδεκάτη	δυνδεκάτῃ	29 Oct 2026, the last rounds
+29908	since	head followed	orth_orig δωδεκά-σχοινος -> Δωδεκά-σχοινος	δωδεκάσχοινος	Δωδεκάσχοινος	29 Oct 2026, the last rounds
+30014	since	head kept	a letter entry: its text is the letter; orth_orig ε -> Εε	ε	Εε	29 Oct 2026, the last rounds
+31086	since	head kept	the text εἷκα did not read as orth_orig εῖκα before; now εἷκα			29 Oct 2026, the last rounds
+33076	since	head kept	the text ἔκσπονδος did not read as orth_orig ἐκσπονδος before; now ἔκσπονδος			29 Oct 2026, the last rounds
+33418	since	head kept	the text ἐκφυτεύω did not read as orth_orig ἐκφῠτευω before; now ἐκφῠτεύω			29 Oct 2026, the last rounds
+33503	since	head kept	the text ἐλάϊνος did not read as orth_orig ἐλᾱ-ϊνος before; now ἐλᾱ́-ϊνος			29 Oct 2026, the last rounds
+34100	since	head followed	orth_orig ἔλση -> ἔλσῃ	ἔλση	ἔλσῃ	29 Oct 2026, the last rounds
+35939	since	head kept	the text ἐνλαξεύω did not read as orth_orig ἐνλαξευω before; now ἐνλαξεύω			29 Oct 2026, the last rounds
+37259	since	head kept	the text ἐξείη did not read as orth_orig ἐξειη· before; now ἐξείη·			29 Oct 2026, the last rounds
+37860	since	head kept	the text ἔξοχα did not read as orth_orig ἐξοχα before; now ἔξοχα			29 Oct 2026, the last rounds
+38110	since	head kept	the text ἐπαΐω did not read as orth_orig ἐπᾱϊω before; now ἐπᾱΐω			29 Oct 2026, the last rounds
+42619	since	head kept	the text ἐριγδουπέω did not read as orth_orig ἐρι-γδουπὲω before; now ἐρι-γδουπέω			29 Oct 2026, the last rounds
+44342	since	head kept	the text εὐίατος did not read as orth_orig εὐι-ᾱτος before; now εὐί-ᾱτος			29 Oct 2026, the last rounds
+45164	since	head kept	the text Εὐριπίδιον did not read as orth_orig εὐρῑπῐδ-ιον before; now Εὐρῑπῐδ-ιον			29 Oct 2026, the last rounds
+46710	since	head kept	the text ζῳοθηρία did not read as orth_orig ζωο-θηρία before; now ζῳο-θηρία			29 Oct 2026, the last rounds
+46711	since	head kept	the text ζῳοθηρικός did not read as orth_orig ζωο-θηρικός before; now ζῳο-θηρικός			29 Oct 2026, the last rounds
+47004	since	head kept	the text ἠθολόγος did not read as orth_orig ἠθόλογ-ος before; now ἠθολόγ-ος			29 Oct 2026, the last rounds
+47735	since	head kept	the text ἦρ did not read as orth_orig ἠρ before; now ἦρ			29 Oct 2026, the last rounds
+49757	since	head followed	orth_orig θυρξεύς -> Θυρξεύς	θυρξεύς	Θυρξεύς	29 Oct 2026, the last rounds
+50329	since	head followed	orth_orig ἱέρο-μας· -> ἱερό-μας·	ἱέρομας	ἱερόμας	29 Oct 2026, the last rounds
+50899	since	head kept	the text Ἰόχια did not read as orth_orig Ἰοχια before; now Ἰόχια			29 Oct 2026, the last rounds
+51050	since	head followed	orth_orig ἱππο-κρήνη -> Ἱππο-κρήνη	ἱπποκρήνη	Ἱπποκρήνη	29 Oct 2026, the last rounds
+51243	since	head kept	the text ἰσθμώδης did not read as orth_orig Ἰσθμ-ώδης before; now ἰσθμ-ώδης			29 Oct 2026, the last rounds
+51859	since	head kept	the text κάβαξ did not read as orth_orig καβαξ before; now κάβαξ			29 Oct 2026, the last rounds
+52224	since	head followed	orth_orig καί … γε -> καὶ ... γε	καί … γε	καὶ ... γε	29 Oct 2026, the last rounds
+52225	since	head kept	the text καὶ … δέ did not read as orth_orig καί … δέ before; now καὶ … δέ			29 Oct 2026, the last rounds
+52226	since	head kept	the text καὶ δή did not read as orth_orig καί δή before; now καὶ δή			29 Oct 2026, the last rounds
+52227	since	head kept	the text καὶ εἰ did not read as orth_orig καί εἰ before; now καὶ εἰ			29 Oct 2026, the last rounds
+52356	since	head kept	the text κάκερως did not read as orth_orig κᾰκ-ερως before; now κᾰκ-έρως			29 Oct 2026, the last rounds
+56788	since	head kept	the text κελεφός did not read as orth_orig κελεφος before; now κελεφός			29 Oct 2026, the last rounds
+57087	since	head kept	the text κεραυνοβόλος did not read as orth_orig κεραυνόβολ-ος before; now κεραυνοβόλ-ος			29 Oct 2026, the last rounds
+59244	batch29final	head followed	orth_orig κοντο-πορεία -> Κοντο-πορεία	κοντοπορεία	Κοντοπορεία	29 Oct 2026, the last rounds
+59362	batch29final	head followed	orth_orig κορακ-ιαί -> Κορακ-ιαί	κορακιαί	Κορακιαί	29 Oct 2026, the last rounds
+61074	batch29final	head followed	orth_orig κῡμᾰτο-λήγη -> Κῡμᾰτο-λήγη	κυματολήγη	Κυματολήγη	29 Oct 2026, the last rounds
+61113	batch29final	head followed	orth_orig κῡμο-δόκη -> Κῡμο-δόκη	κυμοδόκη	Κυμοδόκη	29 Oct 2026, the last rounds
+61115	batch29final	head followed	orth_orig κῡμο-θόη -> Κῡμο-θόη	κυμοθόη	Κυμοθόη	29 Oct 2026, the last rounds
+62368	batch29final	head kept	the text Λατῖνος did not read as orth_orig Λᾰτῑνος before; now Λᾰτῖνος			29 Oct 2026, the last rounds
+62722	batch29final	head followed	orth_orig λεοντ-ιανός -> Λεοντ-ιανός	λεοντιανός	Λεοντιανός	29 Oct 2026, the last rounds
+62991	batch29final	head followed	orth_orig λεύκο-γρυψ -> λευκό-γρυψ	λεύκογρυψ	λευκόγρυψ	29 Oct 2026, the last rounds
+63014	batch29final	head followed	orth_orig λεύκο-κρας· -> λευκό-κρας·	λεύκοκρας	λευκόκρας	29 Oct 2026, the last rounds
+63748	to10	head kept	the text λινόπυρος did not read as orth_orig λῐνο-πῡρος before; now λῐνό-πῡρος			29 Oct 2026, the last rounds
+64985	to10	head kept	the text μακρόθεν did not read as orth_orig μάκρο-θεν before; now μακρό-θεν			29 Oct 2026, the last rounds
+64986	to10	head kept	the text μακρόθι did not read as orth_orig μάκρο-θι before; now μακρό-θι			29 Oct 2026, the last rounds
+65586	to10	head kept	the text ματίζω did not read as orth_orig μᾰτιζω before; now μᾰτίζω			29 Oct 2026, the last rounds
+68056	owner	head followed	orth_orig μίκρο-θεν -> μικρό-θεν	μίκροθεν	μικρόθεν	29 Oct 2026, the last rounds
