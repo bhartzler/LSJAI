@@ -1,0 +1,8 @@
+{
+  "comparison items read": 9701,
+  "comparison items left": 4341,
+  "citations marked": 543063,
+  "citations unmarked": 6249,
+  "citations read": 39488,
+  "note": "kept by hand: the comparison items are placeholders of 31 Oct 2026; the citations are the census of 31 Oct 2026 after the labels (the marked are the <bibl>s, which the build counts too). Unmarked: measured, not estimated, since 1 Nov 2026, 01:10: the label audit (night E, 300 random entries read whole by a reader at cut 2f5e13c9) found 1.6 percent of citations still outside every label (0.8 to 2.5), about 6,249 in the dictionary; 12 of the 16 gaps were ib., l.c., and id. back-references, 3 an author and number, 1 a title and number; wrong labels 0. The next pass is a rule for the back-references; the audit is rerun after it."
+}

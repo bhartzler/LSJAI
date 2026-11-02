@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The LSJ Greek Dictionary: the agent's checklist</title>
+<style>
+  @font-face { font-family: "Gentium Plus"; font-style: normal; font-weight: normal; src: url("fonts/GentiumPlus-Regular.ttf") format("truetype"); }
+  @font-face { font-family: "Gentium Plus"; font-style: italic; font-weight: normal; src: url("fonts/GentiumPlus-Italic.ttf") format("truetype"); }
+  @font-face { font-family: "Gentium Plus"; font-style: normal; font-weight: bold; src: url("fonts/GentiumPlus-Bold.ttf") format("truetype"); }
+  :root { --fg:#1a1a1a; --muted:#666; --rule:#d8d8d2; --bg:#fbfbf8; --link:#1a4a6e; }
+  @media (prefers-color-scheme: dark) { :root { --fg:#e8e6df; --muted:#9a9a92; --rule:#3a3a36; --bg:#17171a; --link:#8fb6d6; } }
+  html, body { margin: 0; background: var(--bg); color: var(--fg); font: 19px/1.5 "Gentium Plus", "Times New Roman", serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 56px 20px 80px; }
+  .back { font-size: 15px; margin: 0 0 24px; } .back a { color: var(--muted); text-decoration: none; } .back a:hover { color: var(--fg); }
+  h1 { font-size: 30px; font-weight: normal; margin: 0 0 6px; }
+  h2 { font-size: 15px; font-weight: normal; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 34px 0 8px; }
+  p, li { margin: 0 0 10px; } ol, ul { padding-left: 1.3em; }
+  a { color: var(--link); text-decoration: none; border-bottom: 1px dotted var(--link); }
+  .lead { color: var(--muted); font-style: italic; margin-bottom: 20px; }
+  .tools { color: var(--muted); font-size: 15px; margin-top: 18px; }
+</style>
+</head>
+<body>
+<main>
+<p class="back"><a href="./">‹ The LSJ Greek Dictionary</a></p>
+<h1>The agent's checklist</h1>
+<p class="lead">The working agreement of the AI agent that keeps this site, so that the same work can be done for another text. The files and the tools are at <a href="https://github.com/bhartzler/LSJAI">github.com/bhartzler/LSJAI</a>.</p>
+
+<h2>The largest picture</h2>
+<p>This site is the Liddell-Scott-Jones Greek dictionary, forked from Helma Dik's edition for Logeion, kept by an AI agent under the direction of one person. The dictionary cites about half a million passages of Greek and Latin. The agent checks the dictionary's own text against other copies and against the printed book, looks for every cited passage in every edition available, shows the editions' differences under each citation, and sends AI readers to judge what a program cannot. Every correction and every verdict stands on the site with its evidence, so that anyone can proofread it, and as the readers improve, so does the dictionary, pass by pass. The aim is a dictionary without errors, with every citation pointing at the correct word in the text, for people now and for the AIs that will learn Greek from it.</p>
+
+<h2>The whole of the work</h2>
+<p>The agent keeps a fork of the dictionary's edition and leaves its ids and layout as they are. It marks every citation in the dictionary, so that a program can find the passage, and it looks for that passage in every edition available. It links each entry to its location in the scan of the printed book, and it links each citation to its passage, shown as one text with an apparatus of the editions' differences. When a question needs judgment, which line a citation points to, which of two copies has the print version, whether a correction holds, it prepares a package and sends AI readers through it in a night of reading within a budget, with a validator on their answers and a second reader on a sample. It applies what the checks uphold and keeps the rest in a table. After every change it builds the site and writes the numbers, and the next pass must beat them.</p>
+
+<h2>The goal</h2>
+<p>An error-free mapping from the Greek to its meaning, formatted for a human reader, with every citation of the dictionary pointing at the correct word in the text cited. The edges are documented, so that a future AI can train on the mapping and follow it. The text may carry a reading that no edition has, because an edition is a judgment with its evidence shown; the evidence is the apparatus.</p>
+
+<h2>Terms</h2>
+<ul>
+<li>A <b>witness</b> is an edition of a text that has the passage cited. The <b>base</b> is the witness whose lines are shown. The <b>apparatus</b> is the list of the words where the other witnesses differ from the base.</li>
+<li>A <b>reading</b> is one reader's verdict on one citation. A <b>pass</b> is one program, or one night of readers, applied to the whole text. A <b>package</b> is the set of items prepared for readers, with its validator.</li>
+<li>The <b>cut</b> finds the lines cited in every witness. The <b>collation</b> joins them into one record per citation. The <b>build</b> makes the site from the records.</li>
+</ul>
+
+<h2>What we hold to</h2>
+<ol>
+<li>Every number comes from a tool run on the files. No number is typed from memory.</li>
+<li>Programs run before AI readers, because a program costs nothing and a reader's attention does. Readers go only where programs and witnesses disagree or fall silent.</li>
+<li>A cheap check with a measured error rate is worth more than an expensive check with none.</li>
+<li>Where witnesses agree the method sees nothing; agreement is a floor, not a proof.</li>
+<li>A report is not evidence. Every delivery is verified against the files before it is applied.</li>
+<li>The dictionary's conventions are not errors. An ending given alone, an abbreviation, and the editor's house style stand as printed.</li>
+</ol>
+
+<h2>Each pass</h2>
+<ol>
+<li>Read the numbers of the last build, and name the number this pass will move.</li>
+<li>Choose the largest pass that costs the least. Leave the hardest cases for the next, better model.</li>
+<li>Write the program on a branch, and verify it on a sample before it is merged.</li>
+<li>If readers are needed, prepare a package: the question, the evidence, and the validator.</li>
+<li>Integrate in this order: verify the delivery, merge, cut, collate, build, test the page, commit by named paths.</li>
+<li>Write the numbers again, and compare them with the numbers before.</li>
+<li>Record the decision, the rulings in the person's words, and what the pass got wrong.</li>
+</ol>
+
+<h2>Before a night of readers</h2>
+<ol>
+<li>Each night has a budget of tokens the person gives the agent, and stops when it is spent.</li>
+<li>The validator refuses an answer that does not quote the text it claims.</li>
+<li>A second reader reads a blind sample, and the agreement is reported with the delivery.</li>
+<li>Ten items are checked by eye before the delivery is applied.</li>
+</ol>
+
+<h2>The witnesses</h2>
+<ol>
+<li>The base is an open edition wherever one has the passage.</li>
+<li>The quotation is three lines, enough to check one citation.</li>
+<li>The printed book decides what the dictionary says; a correction that the page contradicts is withdrawn. Whether the book is right is our judgment; where we differ from it, the book's reading stands in the apparatus.</li>
+<li>Differences of typing, not of reading, are ignored when editions are compared: the apostrophe's form, the encoding of accents, iota under or beside its vowel, punctuation, capitals, a word hyphenated at a line's end, a speaker's name.</li>
+<li>Every edition is addressed by the project's citation ids; the readers know the ids only.</li>
+<li>Once a month the agent searches for new editions of each text it keeps.</li>
+</ol>
+
+<h2>Before a release</h2>
+<ol>
+<li>The site is built from the files as they are, and no cut or build is pending.</li>
+<li>Every edition used is named, with a link, at the place it is used.</li>
+<li>A clean copy of the repository is served and tested before the person publishes.</li>
+<li>The person alone publishes, and nobody is contacted without the person's word.</li>
+</ol>
+
+<h2>For another text</h2>
+<ol>
+<li>Fork the edition and keep its ids. Write the catalogue of its witnesses: edition, work, kind, language, rights, and link.</li>
+<li>Give each edition the project's citation ids.</li>
+<li>Cut, collate, build, and write the numbers.</li>
+<li>Run the passes.</li>
+</ol>
+<p class="tools">The tools in the repository do each step for this text: mark_citations.py, snippets.py, collate.py, build.py, numbers.py; METHOD.md says how each count was made.</p>
+</main>
+</body>
+</html>

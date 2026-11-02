@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LSJAI</title>
+<style>
+  @font-face { font-family: "Gentium Plus"; font-style: normal; font-weight: normal; src: url("fonts/GentiumPlus-Regular.ttf") format("truetype"); }
+  @font-face { font-family: "Gentium Plus"; font-style: italic; font-weight: normal; src: url("fonts/GentiumPlus-Italic.ttf") format("truetype"); }
+  @font-face { font-family: "Gentium Plus"; font-style: normal; font-weight: bold; src: url("fonts/GentiumPlus-Bold.ttf") format("truetype"); }
+  :root { --font: "Gentium Plus", "Times New Roman", serif; }
+  :root { --fg:#1a1a1a; --muted:#666; --rule:#d8d8d2; --bg:#fbfbf8; --mark:#fff2a8; --note:#eef0f3; --link:#1a4a6e; --box:#fff; --corr:#fffdf2; --chg:#b3261e; --flash:#eef0f3; }
+  html, body { margin:0; background:var(--bg); color:var(--fg); font: 19px/1.45 var(--font); }
+  main { max-width: 720px; margin: 0 auto; padding: 56px 20px 80px; }
+  .mast .small { font-size: 14px; letter-spacing: .12em; color: var(--muted); text-transform: uppercase; }
+  h1 { font-size: 38px; line-height: 1.05; font-weight: normal; margin: 8px 0 14px; }
+  h1 span { display: block; }
+  h1 .t1 { font-size: 27px; margin: 0 0 -3px .1em; }
+  h1 .t2 { font-size: 52px; margin-left: .6em; }
+  h1 .t3 { font-size: 23px; font-style: italic; margin-left: 2.2em; margin-top: 8px; }
+  h1 .t4 { font-size: 23px; font-style: italic; margin-left: 3.4em; }
+  .sub { font-size: 18px; margin: 16px 0 28px; }
+  .sub .names { font-variant: small-caps; letter-spacing: .04em; }
+  .search { position: relative; margin: 0 0 36px; }
+  .search input { width: 100%; box-sizing: border-box; font: 26px var(--font); padding: 10px 14px; border: 1px solid #999; border-radius: 4px; background: var(--box); color: var(--fg); }
+  .search .hint { font-size: 14px; color: var(--muted); margin-top: 6px; }
+  .hits { position:absolute; left:0; right:0; top:52px; background:var(--box); border:1px solid #bbb; border-top:none; z-index:2; max-height: 300px; overflow:auto; display:none; }
+  .hits div { padding: 6px 14px; cursor: pointer; font-size: 20px; }
+  .hits div.sel { background: rgba(127,127,127,.2); }
+  article { padding-top: 18px; }
+  .etext { font-kerning: none; }   /* Safari drew the space after a comma between citations too tight (κοντός, 31 Oct 2026); Chrome did not */
+  .nav { border-top: 1px solid var(--rule); padding-top: 8px; display: flex; justify-content: space-between; }
+  .nav button { font: 15px var(--font); color: var(--muted); background: none; border: none; cursor: pointer; padding: 2px 0; }
+  .nav button:hover { color: var(--fg); }
+  .hw { font-weight: bold; font-size: 24px; }
+  .gloss { font-style: italic; margin: 0 0 10px; }
+  .sense { margin: 8px 0; }
+  .sense.l2 { margin-left: 1.2em; } .sense.l3 { margin-left: 2.4em; } .sense.l4 { margin-left: 3.6em; } .sense.l5 { margin-left: 4.8em; }
+  .sn { font-weight: bold; margin-right: .3em; }
+  cite { font-style: normal; }
+  .au { font-variant: small-caps; letter-spacing: .02em; }
+  mark { background: var(--mark); color: inherit; padding: 0 3px; border-radius: 3px; }
+  mark .chg, mark cite .chg, cite mark .chg { color: var(--chg); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  mark.jl { padding-left: 0; border-top-left-radius: 0; border-bottom-left-radius: 0; } mark.jr { padding-right: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; }
+  .corrs .ch b { color: var(--chg); }
+  .corrs { margin-top: 26px; border-left: 4px solid #c9a227; padding: 8px 14px; background: var(--corr); font-size: 16px; }
+  .corrs .one { margin: 6px 0; }
+  .corrs .ch { font-size: 18px; }
+  .corrs .src { color: var(--muted); }
+  h2 { font-size: 16px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: normal; margin: 48px 0 12px; border-top: 1px solid var(--rule); padding-top: 18px; }
+  ol.how { padding-left: 1.3em; margin: 0; } ol.how li { margin: 6px 0; }
+  .feed .row { display: grid; grid-template-columns: 9em 1fr; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--rule); font-size: 17px; }
+  .feed .row a { color: var(--link); text-decoration: none; font-size: 19px; }
+  .feed .ch { white-space: nowrap; }
+  .feed .why { opacity: .9; }
+  .feed .src { color: var(--muted); font-size: 15px; }
+  .foot { margin-top: 40px; font-size: 13px; line-height: 1.45; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 14px; }
+  .foot a { color: var(--link); }
+  .homs { margin: 20px 0 0; } .homs a { color: var(--link); text-decoration: none; margin-right: .6em; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --fg:#e8e6df; --muted:#9a9a92; --rule:#3a3a36; --bg:#17171a; --mark:#5a4d12; --note:#232428; --link:#8fb8dd; --box:#222226; --corr:#24221a; --chg:#ff8a80; --flash:#232428; } }
+  :root[data-theme="dark"] { --fg:#e8e6df; --muted:#9a9a92; --rule:#3a3a36; --bg:#17171a; --mark:#5a4d12; --note:#232428; --link:#8fb8dd; --box:#222226; --corr:#24221a; --chg:#ff8a80; --flash:#232428; }
+  .corner { position: fixed; top: 16px; right: 16px; z-index: 6; display: flex; gap: 10px; align-items: center; }
+  .corner .info, .corner .review { position: static !important; }
+  #rsend { display: none; height: 32px; box-sizing: border-box; padding: 0 12px; border-radius: 16px; border: 1px solid var(--chg); background: var(--box); color: var(--chg); font: bold 15px var(--font); cursor: pointer; }
+  :root[data-review] #rsend { display: inline-block; } #rsend:disabled { border-color: #bbb; color: var(--muted); font-weight: normal; cursor: default; }
+  #rsend:not(:disabled):hover { background: var(--chg); color: #fff; }
+  .info { position: fixed; top: 16px; right: 16px; width: 32px; height: 32px; border-radius: 50%; border: 1px solid #aaa; background: var(--box); color: var(--muted); font: italic 19px/30px var(--font); text-align: center; padding: 0; cursor: pointer; z-index: 6; }
+  .info:hover, .info[aria-expanded="true"] { color: var(--fg); border-color: var(--fg); }
+  .beta { position: fixed; top: 16px; left: 16px; width: 32px; height: 32px; box-sizing: border-box; border-radius: 50%; border: 1px solid #aaa; background: var(--box); color: var(--muted); font: 19px/30px var(--font); text-align: center; text-decoration: none; z-index: 6; }
+  .beta:hover { color: var(--fg); border-color: var(--fg); }
+  .info[aria-expanded="true"] { font-style: normal; font-size: 22px; }
+  .info, .review, .beta, .nav button { transition: transform .18s ease; }
+  .info:hover, .beta:hover { transform: rotate(-8deg) scale(1.06); }
+  .nav button:hover { transform: translateY(-1px); }
+  .nav #zoom { align-self: center; border-bottom: 1px dotted var(--muted); padding: 0; }
+  .nav #zoom[aria-pressed="true"] { color: var(--fg); }
+  .scan { margin: 8px 0 14px; border: 1px solid var(--rule); }
+  .scan #osd { width: 100%; aspect-ratio: 1.618; background: var(--note); }
+  .scan .sb { display: flex; justify-content: space-between; padding: 4px 10px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); }
+  .scan .sb a { color: var(--muted); }
+  .scan .hl { outline: 3px solid rgba(214, 160, 0, .85); background: rgba(255, 214, 0, .10); }
+  .corrs { transform: rotate(-.4deg); transform-origin: left top; }
+  .about { position: fixed; top: 0; right: 0; bottom: 0; width: min(460px, 100%); box-sizing: border-box; overflow: auto; background: var(--box); border-left: 1px solid var(--rule); box-shadow: -8px 0 24px rgba(0,0,0,.12); padding: 24px 26px 48px; z-index: 5; }
+  .about[hidden] { display: none; }
+  .about h2 { margin: 28px 0 10px; border-top: none; padding-top: 0; }
+  .about h2:first-of-type { margin-top: 2px; }
+  .about .counts { margin: 0 0 6px; font-size: 17px; }
+  .about .more { margin: 10px 0 4px; font-size: 17px; }
+  .about .more a.btn { display: inline-block; color: var(--link); text-decoration: none; border: 1px solid var(--link); border-radius: 4px; padding: 6px 12px; }
+  .about .more a.btn:hover { background: var(--link); color: #fff; }
+  .about h2 a.h2link { color: inherit; text-decoration: none; }
+  .about .counts a { color: var(--fg); text-decoration: none; border-bottom: 1px dotted var(--muted); } .about .counts a:hover { border-bottom-color: var(--fg); }
+  .about .close { position: absolute; top: 12px; left: 14px; width: 30px; height: 30px; border: none; background: none; color: var(--muted); font-size: 26px; line-height: 30px; cursor: pointer; padding: 0; }
+  .about .close:hover { color: var(--fg); }
+  .switches { position: fixed; top: 14px; left: 16px; z-index: 6; display: none; gap: 8px; font: 13px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+  .switches select { font: inherit; color: var(--muted); background: var(--box); border: 1px solid #bbb; border-radius: 4px; padding: 3px 6px; }
+  :root:not([data-review]) mark { background: none; padding: 0; }                       /* reading: the plain dictionary (Bruce, 31 Oct 2026) */
+  :root:not([data-review]) mark .chg, :root:not([data-review]) mark cite .chg, :root:not([data-review]) cite mark .chg { color: inherit; text-decoration: none; }
+  :root:not([data-review]) .corrs { display: none; }
+  :root[data-hl="1"] mark { background: none; padding: 0; }
+  :root[data-hl="1"] mark .chg { background: var(--mark); color: inherit; text-decoration: none; }
+  :root[data-hl="2"] mark .chg { text-decoration: none; }
+  .corrs .ctx { font-size: 17px; }
+  .corrs .ctx s { opacity: .7; }
+  .corrs .ctx b { color: var(--chg); font-weight: bold; }
+  .corrs .ctx .line { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .corrs .ctx .line + .line::before { content: '→ '; color: var(--muted); }
+  .corrs .ctx .line:first-child::before { content: '   '; white-space: pre; }
+  .review { width: auto !important; padding: 0 12px !important; border-radius: 16px !important; font: 15px var(--font) !important; }   /* a word: Check, Done while on */
+  .review { position: fixed; top: 16px; right: 58px; width: 32px; height: 32px; border-radius: 50%; border: 1px solid #aaa; background: var(--box); color: var(--muted); font-size: 21px; line-height: 30px; text-align: center; padding: 0; cursor: pointer; z-index: 6; }
+  .review:hover { color: var(--fg); border-color: var(--fg); }
+  :root[data-review] .review { background: #b3261e; color: #fff; border-color: #b3261e; }   /* check mode on: the red of a ✗ verdict */
+  .rbar { display: none; position: fixed; top: 58px; right: 18px; z-index: 6; text-align: right; font-size: 13px; line-height: 1.5; color: var(--muted); }
+  :root[data-review] .rbar { display: flex; flex-direction: column; align-items: flex-end; }
+  .rbar button { font: inherit; font-weight: bold; color: var(--chg); background: none; border: none; cursor: pointer; padding: 0; }
+  .corrs .one { position: relative; padding-right: 4.2em; }
+  .corrs .v { position: absolute; right: 0; top: 2px; display: none; }
+  :root[data-review] .corrs .v { display: block; }
+  .corrs .v button, .pv .v button, .nav .v button, .etext .v button { width: 26px; height: 26px; border: 1px solid #bbb; border-radius: 4px; background: var(--box); color: var(--muted); cursor: pointer; font-size: 15px; margin-left: 3px; }
+  .corrs .v button.on.y, .pv .v button.on.y, .nav .v button.on.y, .etext .v button.on.y { background: #2e7d32; color: #fff; border-color: #2e7d32; }
+  .corrs .v button.on.n, .pv .v button.on.n, .nav .v button.on.n, .etext .v button.on.n { background: #b3261e; color: #fff; border-color: #b3261e; }
+  .corrs .one.y { border-left: 3px solid #2e7d32; margin-left: -14px; padding-left: 11px; }
+  .corrs .one.n { border-left: 3px solid #b3261e; margin-left: -14px; padding-left: 11px; }
+  :root[data-review] .corrs .one.cur .v button { border-color: var(--fg); color: var(--fg); }
+  cite.rd { cursor: pointer; color: inherit; border-bottom: 1px dotted var(--muted); border-radius: 2px; }
+  cite.rd:hover, cite.rd[aria-expanded="true"] { background: var(--note); opacity: 1; }
+  cite.rd:focus-visible { outline: 2px solid var(--link); outline-offset: 1px; }
+  .pv { display: grid; grid-template-columns: max-content 1fr; column-gap: 10px; position: relative; margin: 6px 0 8px; padding: 6px 12px 7px; border: 1px solid var(--rule); border-left: 3px solid var(--rule); border-radius: 4px; background: var(--box); font: normal normal 17px/1.4 var(--font); letter-spacing: normal; text-transform: none; color: var(--fg); }
+  :root[data-review] .pv { padding-right: 4.6em; }
+  .pv.y { border-left-color: #2e7d32; } .pv.n { border-left-color: #b3261e; }
+  .pv .pl { display: contents; color: var(--fg); }
+  .pv .pl .at { min-width: 3.6em; font-size: 13px; line-height: 23px; text-align: right; white-space: nowrap; }
+  .pv .pl.c { color: var(--fg); }
+  .pv .pl.tr .at { color: var(--muted); font-style: italic; }
+  .pv .pl.tr .trl { font-style: italic; color: var(--muted); border-left: 2px solid var(--rule); padding-left: 10px; margin: 3px 0 0; }
+  .pv mark.en { background: var(--mark); color: inherit; padding: 0 2px; border-radius: 2px; }
+  .pv .pl.c .at { color: var(--fg); font-weight: bold; }
+  .pv .f { font-weight: normal; background: var(--mark); border-radius: 3px; padding: 0; margin: 0; }
+  .pv .pl.c .tx { animation: lineflash 1.3s ease-out; border-radius: 3px; }
+  .pv .pl.x .tx { animation: none; }
+  .pv .sep { grid-column: 1 / -1; border-top: 1px dotted var(--rule); margin: 5px 0 3px; }
+  .pv .trs { display: contents; }
+  :root[data-trs="hide"] .pv .trs { display: none; }
+  .pv .pm a.trt { color: var(--link); text-decoration: none; border-bottom: 1px dotted var(--link); white-space: nowrap; }
+  @keyframes lineflash { 0%, 25% { background-color: var(--flash); } 100% { background-color: transparent; } }
+  .pv .nf { margin-left: .7em; color: var(--muted); font-size: 13px; white-space: nowrap; }
+  .pv .trl { grid-column: 2; margin-top: 4px; color: var(--muted); font-style: italic; font-size: 16px; }
+  .pv .pm { grid-column: 1 / -1; margin-top: 2px; color: var(--muted); font-size: 13px; line-height: 1.35; }
+  .pv .pm a.out { color: var(--link); text-decoration: none; border-bottom: 1px dotted var(--link); }
+  .pv .pm .gs { font-weight: bold; }
+  .pv .app { grid-column: 1 / -1; margin-top: 3px; font-size: 14px; line-height: 1.45; color: var(--fg); }
+  .pv .app .ln { color: var(--muted); font-size: 12px; margin-right: .3em; }
+  .pv .app .brk { color: var(--muted); margin: 0 .3em 0 .1em; }
+  .pv .app a.sg, .pv .pm a.sg { color: var(--link); text-decoration: none; border-bottom: 1px dotted var(--link); font-size: 12px; }
+  :root[data-review] cite.gs::after { content: ' guessed'; font-size: 12px; color: var(--muted); }
+  .pv .v { position: absolute; right: 8px; top: 6px; display: none; }
+  :root[data-review] .pv .v { display: block; }
+  .nav .mid { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  #pagev { display: none; } :root[data-review][data-scan] #pagev.has { display: block; }   /* only while the original shows */
+  #flagbox { position: absolute; z-index: 7; display: none; background: var(--box); border: 1px solid #bbb; border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,.15); padding: 6px; gap: 6px; align-items: center; font: 14px var(--font); }
+  #flagbox input { font: 14px var(--font); width: 15em; padding: 3px 6px; border: 1px solid #ccc; border-radius: 4px; background: var(--box); color: var(--fg); }
+  #flagbox button { font: 14px var(--font); padding: 3px 9px; border: 1px solid #b3261e; border-radius: 4px; background: #b3261e; color: #fff; cursor: pointer; }
+  .flags { display: none; font-size: 15px; color: var(--muted); margin: 10px 0 0; } :root[data-review] .flags { display: block; }
+  .flags .fl { display: block; } .flags .fl b { color: var(--chg); font-weight: bold; } .flags .fl button { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 15px; }
+  .etext .ev { float: right; display: none; margin: 2px 14px 0 10px; } :root[data-review] .etext .ev { display: block; }
+</style>
+</head>
+<body>
+<div class="switches">
+  <select id="font" title="Font">
+    <option value='"Coelacanth", serif'>Coelacanth (free)</option>
+    <option value='"Cardo", serif'>Cardo (free)</option>
+    <option value='"Gentium Plus", serif' selected>Gentium Plus (free)</option>
+    <option value='"EB Garamond", serif'>EB Garamond (free)</option>
+    <option value='"GFS Didot", serif'>GFS Didot (free, Greek)</option>
+  </select>
+  <select id="hl" title="Highlight">
+    <option value="1">highlight 1</option>
+    <option value="2" selected>highlight 2</option>
+    <option value="3">highlight 3</option>
+  </select>
+</div>
+<main>
+  <div class="corner"><button type="button" id="rsend" disabled title="Open an issue on GitHub with your marks">Send marks</button><button class="review" id="rev" type="button" title="Proofread: mark what is right, what is wrong, and what needs a closer look" aria-label="Proofread">Proofread</button><button class="info" id="info" type="button" aria-label="About this page" aria-expanded="false" title="About">i</button></div>
+  <div class="mast">
+    <h1><span class="t1">The LSJ</span><span class="t2">Greek Dictionary</span><span class="t3">(corrected at night</span><span class="t4">by AI readers…)</span></h1>
+    <p class="sub">In which <span class="names">Liddell, Scott, and Jones</span> wrote down every Greek word they could find.</p>
+  </div>
+  <div class="search">
+    <input id="q" type="text" placeholder="ἀγάπη, say" autocomplete="off" spellcheck="false" lang="grc">
+    <div class="hits" id="hits"></div>
+    <div class="hint">Type a Greek word. Any Greek word.</div>
+  </div>
+  <div class="rbar" id="rbar"></div>
+  <div class="nav"><button type="button" id="prev" title="Previous entry">‹ previous</button><span class="mid"><button type="button" id="zoom" hidden aria-pressed="false" title="The printed page of the ninth edition, at the entry">see original</button><span id="pagev"><span class="v"><button type="button" class="y" title="the place on the printed page is right">✓</button><button type="button" class="n" title="the place on the printed page is wrong">✗</button></span></span></span><button type="button" id="next" title="Next entry">next ›</button></div>
+  <div class="scan" id="scan" hidden><div id="osd"></div><div class="sb"><span id="scanwhere"></span><span>scroll or pinch to zoom, drag to move · <a id="book" target="_blank" rel="noopener">the scan at the Internet Archive</a></span></div></div>
+  <article id="entry"></article>
+
+  <p class="foot">Source files, method, and credits: <a href="https://github.com/bhartzler/LSJAI">github.com/bhartzler/LSJAI</a>.</p>
+</main>
+
+<aside class="about" id="about" hidden>
+  <h2>About</h2>
+  <p class="counts"><span id="counts"></span></p>
+  <h2><a class="h2link" href="agent.html">How it works</a></h2>
+  <ol class="how">
+    <li>AI readers check each entry against the evidence: the printed page, the 1968 Supplement, other copies of the text, and the passages it cites.</li>
+    <li>A second AI reader reviews and resolves disagreements.</li>
+    <li>Every correction can be proofread by anyone: the old text, the new text, the reader's reason, and the evidence.</li>
+    <li>Under each citation is the text cited, with every edition as a witness, an apparatus of their differences, and the translations.</li>
+    <li>The next pass with better AI readers will find what this one missed. Every error has a shelf life.</li>
+  </ol>
+  <p class="more"><a class="btn" href="agent.html">The whole method, as the agent's checklist ›</a></p>
+
+  <h2>Latest corrections</h2>
+  <div class="feed" id="feed"></div>
+</aside>
+
+
+<script>
+(function(){
+  var entry = document.getElementById('entry'), q = document.getElementById('q'), hits = document.getElementById('hits');
+  function fail(){ entry.innerHTML = '<p>Could not load this entry.</p>'; }
+  if(!window.fetch || !window.Promise || !''.normalize){ fail(); return; }
+  function norm(s){ return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/ς/g,'σ'); }
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  if(/^(127\.0\.0\.1|localhost)$/.test(location.hostname)){ var beta = document.createElement('a'); beta.className = 'beta'; beta.href = 'status.html'; beta.title = 'Where the work stands'; beta.textContent = 'β'; document.body.insertBefore(beta, document.body.firstChild); }   // the β button exists only when the page is served locally; the status page it opens is not published
+  function num(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+  var got = {};
+  function get(url){
+    if(!got[url]){
+      got[url] = fetch(url).then(function(r){ if(!r.ok) throw new Error(url); return r.json(); });
+      got[url].catch(function(){ delete got[url]; });
+    }
+    return got[url];
+  }
+  function letter(v){
+    return get('index/letters.json').then(function(list){
+      var file = 'other.json';
+      list.forEach(function(x){ if(x.letter && x.letter === v.charAt(0)) file = x.file; });
+      return get('index/' + file);
+    });
+  }
+  function find(ix, test){ for(var i = 0; i < ix.length; i++){ if(test(ix[i])) return ix[i]; } return null; }
+  function byId(head, id){ return letter(norm(head)).then(function(ix){ return find(ix, function(t){ return t[2] === id; }); }); }
+  function pad(b){ return ('000' + b).slice(-4); }
+  var current = null, turn = 0, asked = 0, enter = false;
+  var V = {}, R = null;
+  var P = {}, opened = null;
+  var TRANSLATIONS = ['english', 'translations'];   // the trees; a citation's translations are ranked by their shelf, after their texts: the Loeb's, Perseus's, First1K's, then ToposText's
+  var SHELF_RANK = {Loeb: 0, Perseus: 1, First1K: 2, ToposText: 3};
+  // every edition's footer ends with its collection in parentheses (Bruce, 1 Nov 2026): the tree's name here, in place of whatever the cut wrote
+  var SHELF_NAMES = {Loeb: 'Loeb', Perseus: 'Perseus', First1K: 'First1KGreek', ToposText: 'ToposText'};
+  function namedTr(t){ var m = /\(([^()]+)\)\s*$/.exec(t.source || ''); var s = String(t.source || '').replace(/^tr\.\s*/, ''); return m && SHELF_NAMES[m[1]] ? s.replace(/\s*\([^()]*\)\s*$/, '') + ' (' + SHELF_NAMES[m[1]] + ')' : s; }
+  function shelfRank(t){ var m = /\(([^()]+)\)\s*$/.exec(t.source || ''); return m && SHELF_RANK[m[1]] !== undefined ? SHELF_RANK[m[1]] : 9; }   // a citation's lines: a preview marked prefer first, then one the checks back, then the first of these that holds them; within one, the newest edition (stored first)
+  var LOCAL = /^(127\.0\.0\.1|localhost)$/.test(location.hostname);
+  // the collated tree, tools/collate.py: one record a citation (this text, its witnesses, the apparatus); served locally the page
+  // reads text-all first, when that tree exists
+  function textBlock(b){ var pub = 'snippets/text/' + pad(b) + '.json'; return (LOCAL ? get('snippets/text-all/' + pad(b) + '.json').catch(function(){ return get(pub); }) : get(pub)).catch(function(){ return {}; }); }
+  function snippets(b, id){
+    // each of an entry's citations as tools/collate.py wrote it (this text, its witnesses, the apparatus), with every
+    // translation that places it (trs, stacked beneath, ranked by shelf: the Loeb's, Perseus's, First1K's, then ToposText's)
+    return Promise.all([textBlock(b)].concat(TRANSLATIONS.map(function(src){ return get('snippets/' + src + '/' + pad(b) + '.json').catch(function(){ return {}; }); }))).then(function(got){
+      var trs = {};
+      TRANSLATIONS.forEach(function(src, k){ (got[1 + k][id] || []).forEach(function(t){ (trs[t.n] = trs[t.n] || []).push(t); }); });
+      Object.keys(trs).forEach(function(n){ trs[n].sort(function(a, b){ return shelfRank(a) - shelfRank(b); }); });   // a stable sort: within a shelf, as stored (the newest first)
+      return (got[0][id] || []).map(function(r){ return Object.assign({}, r, {trs: trs[r.n] || []}); }).sort(function(a, b){ return a.n - b.n; });
+    });
+  }
+  function trBlock(g, c){     // a translation's passage and its footer; the same words from two sources are one passage naming both (Bruce, 2 Nov 2026)
+    var t = g[0];
+    return '<span class="pl tr"><span class="at"></span><span class="tx trl" lang="en">' + markEn(t.lines.filter(function(x){ return x; }).join(' '), glossWords(c)) + '</span></span><span class="pm">English: ' + g.map(function(x){ return esc(namedTr(x)) + (x.at ? ', at ' + esc(x.at) : '') + online(x.url, 'the translation online'); }).join(' · also ') + '</span>';
+  }
+  var TRWORD; try{ TRWORD = new RegExp('\\p{L}+', 'gu'); }catch(err){ TRWORD = /[A-Za-z\u00c0-\u024f]+/g; }
+  function trWords(t){ var w = {}, m, s = (t.lines || []).filter(function(x){ return x; }).join(' ').toLowerCase(); TRWORD.lastIndex = 0; while((m = TRWORD.exec(s))) w[m[0]] = true; return w; }
+  function trSame(a, b){ var both = 0, na = 0, nb = 0, k; for(k in a){ na++; if(b[k]) both++; } for(k in b) nb++; return na && nb && both / (na + nb - both) >= 0.85; }   // the same translation when the words agree (Jaccard 0.85): the same text keyed twice, with stray dashes and spellings
+  function trGroups(s){        // the translations, those that share their words as one, the first in shelf order shown (Bruce, 2 Nov 2026: "if translations agree over a certain percentage of words they should be considered duplicates")
+    var groups = [], words = [];
+    (s.trs || []).forEach(function(t){
+      var w = trWords(t), k;
+      for(k = 0; k < groups.length; k++){ if(trSame(words[k], w)){ groups[k].push(t); return; } }
+      groups.push([t]); words.push(w);
+    });
+    return groups;
+  }
+  // The translations are stacked under the text, each after a rule, and can be folded away: the fold is sticky, one setting
+  // for every box (Bruce, 2 Nov 2026: "a toggle to show/hide the translation section since it can get so long… make it sticky")
+  function trsShown(){ try{ return localStorage.getItem('lsjai.trs') !== 'hide'; }catch(err){ return true; } }
+  function trsToggle(){ var show = !trsShown(); try{ localStorage.setItem('lsjai.trs', show ? 'show' : 'hide'); }catch(err){} document.documentElement.setAttribute('data-trs', show ? 'show' : 'hide'); var ts = document.querySelectorAll('.trt'); for(var i = 0; i < ts.length; i++) ts[i].textContent = trtLabel(parseInt(ts[i].getAttribute('data-n'), 10)); }
+  function trtLabel(n){ return (n === 1 ? 'one translation' : n + ' translations') + (trsShown() ? ' ▾' : ' ▸'); }   // Bruce, 2 Nov 2026
+  function trsHTML(s, c){
+    var groups = trGroups(s);
+    if(!groups.length) return '';
+    return '<span class="trs">' + groups.map(function(g){ return '<span class="sep"></span>' + trBlock(g, c); }).join('') + '</span>';
+  }
+  function trsToggleHTML(s){ var n = trGroups(s).length; return n ? ' · <a class="trt" href="#" data-n="' + n + '">' + trtLabel(n) + '</a>' : ''; }
+  document.documentElement.setAttribute('data-trs', trsShown() ? 'show' : 'hide');
+  document.addEventListener('click', function(ev){ var a = ev.target && ev.target.closest ? ev.target.closest('a.trt') : null; if(!a) return; ev.preventDefault(); trsToggle(); });
+  // The box (Bruce, 2 Nov 2026): one Greek text, this text, the cited word marked; under it one apparatus line where
+  // any witness differs, each siglum linked to its source; the witnesses consulted, each linked, and whether they
+  // agree; the translations stacked beneath. All of it from tools/collate.py's record: s.lines, s.app (per line:
+  // [lemma, [[variant, [witness index...]]...]]), s.ws (nm, sg, url, miss: the lines it did not align to).
+  function sgLink(s, wi){ var w = s.ws[wi]; return w.url ? '<a class="out sg" href="' + esc(w.url) + '" target="_blank" rel="noopener" title="' + esc(w.nm) + '">' + esc(w.sg) + '</a>' : '<span class="sg" title="' + esc(w.nm) + '">' + esc(w.sg) + '</span>'; }
+  function appHTML(s){
+    var out = '';
+    for(var k = 0; k < 3; k++){
+      if(!s.app || !s.app[k] || !s.app[k].length) continue;
+      out += '<span class="app"><span class="ln">' + esc(s.at[k]) + '</span>' + s.app[k].map(function(e){
+        return '<span class="lem">' + esc(e[0]) + '</span><span class="brk">]</span>' + e[1].map(function(v){ return esc(v[0]) + ' ' + v[1].map(function(wi){ return sgLink(s, wi); }).join(', '); }).join('; ');
+      }).join(' · ') + '</span>';
+    }
+    return out;
+  }
+  function workOf(s){ return String(s.source || '').replace(/\s*\([^()]*\)\s*$/, '').replace(/,\s*ed\.\s[\s\S]*$/, ''); }   // the work as the catalogue names the base edition: "Pindar, Isthmian Odes"
+  function witHTML(s){   // the footer: the work and the place first (Bruce, 2 Nov 2026: "Pi. I. 1.43… the reader might not know the author and work"), then the witnesses, the base first, each a link to its text online ("just the links")
+    var work = workOf(s), at = s.at && s.at[1] ? String(s.at[1]) : '', last = work.split(' ').pop();
+    if(at && last && at.indexOf(last) === 0) work = work.slice(0, work.length - last.length).replace(/\s+$/, '');   // an inscription or papyrus named by its number: IG II² 650 and the place 650.8 read IG II² 650.8
+    var head = work ? esc(work + (at ? ' ' + at : '')) + ' · ' : '';
+    return head + (s.ws || []).map(function(w){ return w.url ? '<a class="out" href="' + esc(w.url) + '" target="_blank" rel="noopener">' + esc(w.nm) + '</a>' : esc(w.nm); }).join(' · ');
+  }
+  function pvHTML(s, c, v){
+    var lang = /:latinLit:/.test(s.urn) ? 'la' : 'grc';
+    return '<span class="v"><button type="button" class="y' + (v==='y' ? ' on' : '') + '" title="right (y)">✓</button><button type="button" class="n' + (v==='n' ? ' on' : '') + '" title="wrong (n)">✗</button></span>' + s.lines.map(function(t, k){
+      return t === null ? '' : '<span class="pl' + (k === 1 ? ' c' : '') + '"><span class="at">' + esc(s.at[k]) + '</span><span class="tx" lang="' + lang + '">' + (k === 1 ? formed(t, s.form) : esc(t)) + '</span></span>';
+    }).join('') + appHTML(s) + '<span class="pm">' + (s.guess ? '<span class="gs">guessed</span>, ' + (s.guess === 'word' ? 'the headword is not on this line' : s.guess === 'reading' ? (s.kind === 'rejected' ? 'the reading was rejected; these are the lines the reference points to' : 'a reader could not place it; these are the lines the reference points to') : 'the place shown is not the citation\'s') + ' · ' : '') + witHTML(s) + trsToggleHTML(s) + '</span>' + trsHTML(s, c);
+  }
+  var WORD;
+  try{ WORD = new RegExp('[\\p{L}\\p{M}]+', 'gu'); }catch(err){ WORD = /[A-Za-z\u00c0-\u024f\u0300-\u036f\u0386\u0388-\u03ff\u1f00-\u1fbc\u1fbe\u1fc2-\u1fcc\u1fd0-\u1fdb\u1fe0-\u1fec\u1ff2-\u1ffc]+/g; }
+  function formed(t, form){
+    if(!form) return esc(t);
+    var want = {}, out = '', at = 0, m;
+    form.split(' ').forEach(function(w){ want[w] = true; });
+    WORD.lastIndex = 0;
+    while((m = WORD.exec(t))){ if(want[m[0]]){ out += esc(t.slice(at, m.index)) + '<span class="f">' + esc(m[0]) + '</span>'; at = m.index + m[0].length; } }
+    return out + esc(t.slice(at));
+  }
+  function closePv(){
+    if(!opened) return;
+    if(opened.pv.parentNode){ var pn = opened.pv.parentNode; pn.removeChild(opened.pv); pn.normalize(); }   // the text split at the citation's punctuation joins again (Bruce, 2 Nov 2026: "12.149;stamping")
+    opened.cite.setAttribute('aria-expanded', 'false');
+    opened = null;
+    retarget();
+  }
+  function glossWords(c){
+    var best = null, all = entry.querySelectorAll('i');
+    for(var k = 0; k < all.length; k++){ var el = all[k]; if(el.closest('.pv')) continue; if(el.compareDocumentPosition(c) & Node.DOCUMENT_POSITION_FOLLOWING) best = el; else break; }
+    if(!best) return [];
+    var stop = {with: 1, from: 1, that: 1, this: 1, these: 1, those: 1, have: 1, been: 1, were: 1, will: 1, when: 1, what: 1, which: 1, there: 1, their: 1, them: 1, then: 1, than: 1, also: 1, into: 1, upon: 1, only: 1, over: 1, such: 1, some: 1, more: 1, most: 1, very: 1, like: 1, just: 1, even: 1, after: 1, before: 1, between: 1, under: 1, about: 1, against: 1, among: 1, through: 1, without: 1, within: 1, being: 1, other: 1, each: 1, both: 1, used: 1, said: 1, says: 1, make: 1, made: 1, esp: 1, prob: 1, metaph: 1, abs: 1, gen: 1, dat: 1, acc: 1, pass: 1, act: 1};
+    return (best.textContent.toLowerCase().match(/[a-z]{4,}/g) || []).filter(function(w){ return !stop[w]; }).map(function(w){ return w.slice(0, 5); });   // function words never mark the translation (Bruce, 2 Nov 2026: "with" marked)
+  }
+  function markEn(text, stems){
+    if(!stems.length) return esc(text);
+    var re = /[A-Za-z]+/g, m, out = '', last = 0, done = false;
+    while(!done && (m = re.exec(text))){
+      var w = m[0].toLowerCase();
+      if(stems.some(function(st){ return w.indexOf(st) === 0; })){ out += esc(text.slice(last, m.index)) + '<mark class="en">' + esc(m[0]) + '</mark>'; last = m.index + m[0].length; done = true; }
+    }
+    return out + esc(text.slice(last));
+  }
+  function online(url, what){ return url ? ' · <a class="out" href="' + esc(url) + '" target="_blank" rel="noopener">' + what + '</a>' : ''; }
+  function togglePv(c){
+    var was = opened && opened.cite === c;
+    closePv();
+    if(was || !current) return;
+    var s = P[c.getAttribute('data-n')];
+    if(!s) return;
+    var key = citeKey(current[2], s);   // the edition and the cited line are part of the key; an older key is not carried (second review 3)
+    var v = V[key] || '';
+    var pv = document.createElement('span');
+    pv.className = 'pv' + (v ? ' ' + v : '');
+    pv.setAttribute('data-key', key);
+    pv.innerHTML = pvHTML(s, c, v);
+    var after = c.parentNode && c.parentNode.nodeName === 'MARK' ? c.parentNode : c, at = after.nextSibling, m;
+    if(at && at.nodeType === 3 && (m = /^[.,;:)\]·]+/.exec(at.data))) at = at.splitText(m[0].length);   // the citation's punctuation stays with it
+    after.parentNode.insertBefore(pv, at);
+    c.setAttribute('aria-expanded', 'true');
+    opened = {cite: c, pv: pv};
+    retarget();
+  }
+  try{ V = JSON.parse(localStorage.getItem('lsjai.review') || '{}') || {}; }catch(err){ V = {}; }
+  function sig(t){ for(var h = 2166136261, i = 0; i < t.length; i++){ h ^= t.charCodeAt(i); h = Math.imul(h, 16777619) >>> 0; } return h.toString(36); }
+  function citeKey(id, s){ return 'cite|' + id + '|' + s.n + '|' + s.urn + '|' + s.at[1] + '|' + s.source + '|' + sig(s.lines[1] || ''); }   // the text judged is in the key: the edition and a signature of the cited line
+  for(var lk in V){ if(/^cite\|/.test(lk) && lk.split('|').length !== 7) delete V[lk]; }   // a vote under an older key does not say which text it judged: it is not carried
+  // M: the entries given a verdict, their index rows, so the check walk keeps them (any verdict marks the entry)
+  var M = {}; try{ M = JSON.parse(localStorage.getItem('lsjai.marked') || '{}') || {}; }catch(err){ M = {}; }
+  function saveV(){ try{ localStorage.setItem('lsjai.review', JSON.stringify(V)); localStorage.setItem('lsjai.marked', JSON.stringify(M)); }catch(err){} }
+  // F: the flags, {key: {id, head, text, note}}: a stretch of an entry's text the reader marks for a closer look
+  var F = {}; try{ F = JSON.parse(localStorage.getItem('lsjai.flags') || '{}') || {}; }catch(err){ F = {}; }
+  function saveF(){ try{ localStorage.setItem('lsjai.flags', JSON.stringify(F)); }catch(err){} }
+  function flagList(){
+    var box = entry.querySelector('.flags'); if(!box || !current) return;
+    box.innerHTML = Object.keys(F).filter(function(k){ return F[k].id === current[2]; }).map(function(k){
+      return '<span class="fl">⚑ <b>' + esc(F[k].text) + '</b>' + (F[k].note ? ' · ' + esc(F[k].note) : '') + ' <button type="button" data-flag="' + esc(k) + '" title="remove the flag">×</button></span>';
+    }).join('');
+  }
+  function citeOrder(root){   // the citations by number: the dictionary's own first, then each pass LSJAI marked (data-r), as site/build.py's cite_order()
+    return [].slice.call(root.querySelectorAll('.etext cite')).map(function(c, i){ return [c.getAttribute('data-r') || '', i, c]; })
+      .sort(function(a, b){ return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : a[1] - b[1]; }).map(function(x){ return x[2]; });
+  }
+  function keyEntry(k){ var p = k.split('|'); return p[0] === 'cite' || p[0] === 'page' || p[0] === 'entry' ? p[1] : p[0]; }
+  function inReview(){ return document.documentElement.hasAttribute('data-review') && R !== null; }
+  function setV(key, v){
+    if(V[key] === v) delete V[key]; else V[key] = v;
+    if(current && keyEntry(key) === current[2]) M[current[2]] = current;
+    saveV();
+    var ones = document.querySelectorAll('[data-key]');
+    for(var i = 0; i < ones.length; i++){
+      if(ones[i].getAttribute('data-key') !== key) continue;
+      ones[i].classList.remove('y', 'n');
+      if(V[key]) ones[i].classList.add(V[key]);
+      ones[i].querySelector('.v .y').className = 'y' + (V[key] === 'y' ? ' on' : '');
+      ones[i].querySelector('.v .n').className = 'n' + (V[key] === 'n' ? ' on' : '');
+    }
+    if(inReview()) rbar();
+    retarget();
+  }
+  function retarget(){
+    var ones = entry.querySelectorAll('.corrs .one'), cur = null;
+    for(var i = 0; i < ones.length; i++){ ones[i].classList.remove('cur'); if(!cur && !ones[i].classList.contains('y') && !ones[i].classList.contains('n')) cur = ones[i]; }
+    if(cur && !opened) cur.classList.add('cur');   // with a preview open, the keys mark the preview (Codex 10)
+  }
+  function rrow(r){ return [norm(r[1]), r[1], r[0], r[4]]; }
+  // The check walk: the entries of review.json (a correction or a guessed citation) and every entry given a verdict, in index order
+  function cmp(a, b){ return a[3] - b[3] || (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0) || (a[1] < b[1] ? -1 : a[1] > b[1] ? 1 : 0); }
+  function walk(){
+    var seen = {}, has = {}, out = [];
+    R.forEach(function(r){ seen[r[0]] = true; out.push(rrow(r)); });
+    for(var k in V){ if(V[k]) has[keyEntry(k)] = true; }
+    for(var fk in F) has[F[fk].id] = true;
+    for(var id in M){ if(has[id] && !seen[id]){ seen[id] = true; out.push(M[id]); } }
+    return out.sort(cmp);
+  }
+  function rpos(W){ if(!current) return -1; for(var i = 0; i < W.length; i++){ if(W[i][2] === current[2]) return i; } return -1; }
+  function rbar(){
+    var W = walk(), k = rpos(W), y = 0, n = 0;
+    for(var key in V){ if(V[key] === 'y') y++; else if(V[key] === 'n') n++; }
+    var nf = Object.keys(F).length, marks = y + n + nf, send = document.getElementById('rsend');
+    document.getElementById('rbar').innerHTML = (k < 0 ? '' : '<span>' + num(k + 1) + ' of ' + num(W.length) + ' to proofread</span>') + '<span>' + y + ' right, ' + n + ' wrong, ' + nf + (nf === 1 ? ' flag' : ' flags') + '</span>';
+    send.disabled = !marks; send.textContent = marks ? 'Send ' + num(marks) + (marks === 1 ? ' mark' : ' marks') : 'Send marks';
+  }
+  function syncPageV(e){
+    var pv = document.getElementById('pagev'), k = 'page|' + current[2], v = V[k] || '';
+    pv.setAttribute('data-key', k); pv.className = (e && e.box ? 'has' : '') + (v ? ' ' + v : '');
+    pv.querySelector('.v .y').className = 'y' + (v === 'y' ? ' on' : ''); pv.querySelector('.v .n').className = 'n' + (v === 'n' ? ' on' : '');
+  }
+  function headOf(id){ if(M[id]) return M[id][1]; for(var i = 0; i < R.length; i++){ if(R[i][0] === id) return R[i][1]; } return ''; }
+  function submitV(){
+    var ids = {}, cids = {}, cites = false;
+    for(var key in V){ if(key.indexOf('cite|') === 0){ cids[key.split('|')[1]] = true; cites = true; } else ids[key.slice(0, key.indexOf('|'))] = true; }
+    var want = R.filter(function(r){ return ids[r[0]]; }), other = Object.keys(F).length > 0;
+    for(var ok in V){ if(/^(page|entry)\|/.test(ok) && V[ok]) other = true; }
+    if(!want.length && !cites && !other) return;
+    Promise.all([Promise.all(want.map(function(r){ return get('entries/' + pad(r[4]) + '.json'); })), cites ? get('cited.json') : Promise.resolve([])]).then(function(got){
+      var blocks = got[0], C = got[1].filter(function(c){ return cids[c[0]]; });
+      return Promise.all(C.map(function(c){ return snippets(c[2], c[0]); })).then(function(sn){ return [blocks, C, sn]; });
+    }).then(function(got){
+      var blocks = got[0], C = got[1], sn = got[2], nc = 0, nq = 0;
+      var rows = ['kind\tentry\trow\theadword\told\tnew\tcitation\treading\tverdict'];
+      want.forEach(function(r, i){ var e = blocks[i][r[0]]; (e && e.corr || []).forEach(function(c){ var v = V[r[0] + '|r' + c.row]; if(v){ nc++; rows.push(['correction', r[0], c.row, e.head, c.old, c.new, '', '', v === 'y' ? 'right' : 'wrong'].join('\t')); } }); });
+      C.forEach(function(c, i){ sn[i].forEach(function(s){ var v = V[citeKey(c[0], s)]; if(v){ nq++; rows.push(['citation', c[0], '', c[1], '', '', s.n, (s.kind || 'unread') + ', ' + s.ref + ', ' + s.urn + ', ' + s.source, v === 'y' ? 'right' : 'wrong'].join('\t')); } }); });
+      var np = 0;
+      for(var pkey in V){ var kind = pkey.split('|')[0]; if((kind === 'page' || kind === 'entry') && V[pkey]){ np++; var pid = pkey.split('|')[1]; rows.push([kind, pid, '', headOf(pid), '', '', '', kind === 'page' ? 'the place on the printed page' : 'the entry', V[pkey] === 'y' ? 'right' : 'wrong'].join('\t')); } }
+      for(var fk in F){ np++; rows.push(['flag', F[fk].id, '', F[fk].head, F[fk].text, '', '', F[fk].note || '', 'look']. join('\t')); }
+      var total = nc + nq + np;
+      if(!total) return;
+      var tsv = rows.join('\n') + '\n', title = 'Verdicts on ' + total + (total === 1 ? ' item' : ' items');
+      var body = 'Reviewer: \n\nReviewed on the page; one row a verdict.\n\n```\n' + tsv + '```\n';
+      var url = 'https://github.com/bhartzler/LSJAI/issues/new?title=' + encodeURIComponent(title) + '&body=' + encodeURIComponent(body);
+      if(url.length > 7000){
+        body = 'Reviewed on the page; the rows are on the clipboard: paste them here.\n';
+        url = 'https://github.com/bhartzler/LSJAI/issues/new?title=' + encodeURIComponent(title) + '&body=' + encodeURIComponent(body);
+        var bar = document.getElementById('rbar'), byHand = function(){ bar.innerHTML = '<span>The rows did not reach the clipboard: copy them from here, then <a href="' + esc(url) + '" target="_blank" rel="noopener">open the issue</a>.</span><textarea readonly style="width:100%;height:8em;font:12px monospace">' + esc(tsv) + '</textarea>'; };
+        if(!navigator.clipboard){ byHand(); return; }
+        navigator.clipboard.writeText(tsv).then(function(){ window.open(url, '_blank'); }, byHand);   // Codex 8: never say copied when it was not
+        return;
+      }
+      window.open(url, '_blank');
+    }).catch(function(){});
+  }
+  function rstep(d){
+    var W = walk(), k = rpos(W), j;
+    if(k >= 0) j = k + d;
+    else if(!current) j = d > 0 ? 0 : W.length - 1;
+    else { j = d > 0 ? W.length : W.length - 1; for(var i = 0; i < W.length; i++){ if(cmp(W[i], current) > 0){ j = d > 0 ? i : i - 1; break; } } }   // from outside the walk: the next one after it
+    if(j >= 0 && j < W.length) open(Promise.resolve(W[j]));
+  }
+  function open(found){
+    var my = ++turn;
+    found.then(function(row){ if(my !== turn) return; if(row) show(row); else fail(); }, function(){ if(my === turn) fail(); });
+  }
+  function show(row){
+    var my = ++turn; asked++; enter = false;
+    Promise.all([get('entries/' + pad(row[3]) + '.json'), letter(row[0]), snippets(row[3], row[2])]).then(function(r){
+      if(my !== turn) return;
+      var e = r[0][row[2]];
+      if(!e){ fail(); return; }
+      var used = [];
+      function ctxLine(c){
+        var m = (e.marks || []).filter(function(x, i){ return used.indexOf(i) < 0 && c.new && (x.t === c.new || (x.t && c.new.indexOf(x.t) >= 0) || (c.new.indexOf(x.t.replace(/\s/g,'')) >= 0 && x.t)); })[0];
+        if(!m){ m = (e.marks || []).filter(function(x, i){ return used.indexOf(i) < 0 && !c.new && !x.t; })[0]; }
+        if(!m) return (c.old ? '<s>' + esc(c.old) + '</s>' : '(nothing)') + ' <span class="arrow">→</span> ' + (c.new ? '<b>' + esc(c.new) + '</b>' : '(nothing)') + '\u0000';
+        used.push((e.marks || []).indexOf(m));
+        var cut = function(s, left){ return s.length > 18 ? (left ? '…' + s.slice(-18) : s.slice(0, 18) + '…') : s; };
+        var b = cut(m.b, true), a = cut(m.a), ob = cut(m.ob == null ? m.b : m.ob, true), oa = cut(m.oa == null ? m.a : m.oa);   // the old line in Logeion's own text (second review 5)
+        return '<span class="ctx"><span class="line">' + esc(ob) + (m.o ? '<s>' + esc(m.o) + '</s>' : '') + esc(oa) + '</span><span class="line">' + esc(b) + (m.t ? '<b>' + esc(m.t) + '</b>' : '') + esc(a) + '</span></span>';
+      }
+      var corrs = (e.corr || []).map(function(c){
+        var ch = ctxLine(c), hidden = ch.indexOf('\u0000') >= 0; ch = ch.replace('\u0000', '');
+        var src = /^the readers' record/.test(c.src) ? 'the cited text, in the readers’ record' : c.src;
+        var sup = /1968 Supplement, printed page\s*(\d+)/.exec(c.quote || ''), supLink = sup ? ' · <a class="out" href="https://archive.org/details/b31364949_0003/page/n' + (parseInt(sup[1], 10) + 15) + '" target="_blank" rel="noopener">the Supplement’s page, scanned</a>' : '';
+        var key = row[2] + '|r' + c.row, was = row[2] + '|' + c.old + '|' + c.new;   // a correction's verdict key: its row in corrections.tsv
+        if(V[was]){ if(!V[key] && e.corr.filter(function(d){ return d.old === c.old && d.new === c.new; }).length === 1) V[key] = V[was]; delete V[was]; saveV(); }   // keys before 31 Oct 22:00: kept where unambiguous
+        var v = V[key] || '';
+        return '<div class="one ' + v + '" data-key="' + esc(key) + '"><span class="v"><button type="button" class="y' + (v==='y' ? ' on' : '') + '" title="right (y)">✓</button><button type="button" class="n' + (v==='n' ? ' on' : '') + '" title="wrong (n)">✗</button></span><span class="ch">' + ch + '</span> <span class="src">corrected ' + esc(c.when) + ', certainty ' + esc(c.sure) + ' of 5</span>' + (hidden ? '<br><span class="src">This change is in the entry\'s hidden headword form or its spacing, not in the text shown.</span>' : '') + '<br><span class="why">' + esc(c.why) + '</span><br><span class="src">Evidence: ' + esc(src) + (c.quote ? ' — “' + esc(c.quote) + '”' : '') + supLink + '</span></div>';
+      }).join('');
+      var others = r[1].filter(function(t){ return t[1] === row[1] && t[2] !== row[2]; }).map(function(t){
+        return '<a href="#' + encodeURIComponent(t[1]) + '@' + encodeURIComponent(t[2]) + '" data-id="' + esc(t[2]) + '">' + esc(t[1]) + '</a>';   // the chosen homonym travels with the link (second review 11)
+      }).join(' ');
+      lastEntry = e; bookLink(e);
+      var ek = 'entry|' + row[2], evv = V[ek] || '';
+      var ev = '<span class="ev' + (evv ? ' ' + evv : '') + '" data-key="' + esc(ek) + '"><span class="v"><button type="button" class="y' + (evv === 'y' ? ' on' : '') + '" title="the entry is right">✓</button><button type="button" class="n' + (evv === 'n' ? ' on' : '') + '" title="something in the entry is wrong">✗</button></span></span>';
+      entry.innerHTML = (e.gloss ? '<p class="gloss">in a word, ' + esc(e.gloss) + '</p>' : '') + '<div class="etext">' + e.html + '<p class="flags"></p></div>' + (corrs ? '<div class="corrs">' + corrs + '</div>' : '') + (others ? '<p class="homs">' + others + '</p>' : '');
+      opened = null; P = {}; retarget();
+      var cites = citeOrder(entry);
+      r[2].forEach(function(s){
+        var c = cites[s.n - 1];
+        if(!c) return;
+        P[s.n] = s;
+        c.className = 'rd' + (s.guess ? ' gs' : ''); c.tabIndex = 0;
+        c.setAttribute('role', 'button'); c.setAttribute('aria-expanded', 'false'); c.setAttribute('data-n', s.n);
+        c.title = 'The cited lines';
+      });
+      current = row; hideFlag();   // a pending selection belongs to the entry it was made in (second review 9)
+      syncPageV(e); flagList();
+      if(inReview()) rbar();
+      q.value = e.head;
+      try { history.replaceState(null, '', '#' + encodeURIComponent(e.head) + (others ? '@' + row[2] : '')); } catch(x){}
+      hits.style.display = 'none';
+    }).catch(function(){ if(my === turn) fail(); });
+  }
+  entry.addEventListener('click', function(ev){
+    var c = ev.target.closest('cite.rd');
+    if(c){ ev.preventDefault(); togglePv(c); return; }
+    var a = ev.target.closest('.homs a[data-id]');
+    if(!a || !current) return;
+    ev.preventDefault();
+    var id = a.getAttribute('data-id');
+    open(letter(current[0]).then(function(ix){ return find(ix, function(t){ return t[2] === id; }); }));
+  });
+  var rows = [], sel = -1, listed = null;
+  function select(k){
+    if(rows[sel]) rows[sel].classList.remove('sel');
+    sel = k;
+    if(rows[sel]){ rows[sel].classList.add('sel'); rows[sel].scrollIntoView({block:'nearest'}); }
+  }
+  function search(){
+    var v = norm(q.value.trim()), my = ++asked;
+    letter(v || 'α').then(function(ix){
+      if(my !== asked) return;
+      var out = [];
+      if(!v){ out = ix.slice(0, 60); }
+      else {
+        for(var i=0;i<ix.length && out.length<12;i++){ if(ix[i][0].indexOf(v)===0) out.push(ix[i]); }
+        if(!out.length){ for(var i=0;i<ix.length && out.length<12;i++){ if(ix[i][0].indexOf(v)>=0) out.push(ix[i]); } }
+      }
+      hits.innerHTML = ''; rows = []; sel = -1;
+      out.forEach(function(t, k){ var d=document.createElement('div'); d.textContent=t[1]; d.onclick=function(){ show(t); }; d.onmousemove=function(){ if(sel!==k) select(k); }; hits.appendChild(d); rows.push(d); });
+      hits.style.display = out.length ? 'block' : 'none';
+      if(out.length) select(0);
+      listed = v;
+      if(enter){ enter = false; if(rows[sel]) rows[sel].onclick(); }
+    }).catch(function(){ if(my === asked){ enter = false; hits.style.display = 'none'; } });
+  }
+  q.addEventListener('input', search);
+  q.addEventListener('focus', function(){ q.select(); search(); });
+  q.addEventListener('keydown', function(ev){
+    if(ev.key==='ArrowDown'){ ev.preventDefault(); if(hits.style.display==='none') search(); else select(Math.min(sel+1, rows.length-1)); }
+    else if(ev.key==='ArrowUp'){ ev.preventDefault(); select(Math.max(sel-1, 0)); }
+    else if(ev.key==='Enter'){ ev.preventDefault(); if(listed === norm(q.value.trim())){ if(rows[sel]) rows[sel].onclick(); } else { enter = true; search(); } }
+    else if(ev.key==='Escape'){ hits.style.display='none'; }
+  });
+  document.addEventListener('click', function(ev){ if(!ev.target.closest('.search')) hits.style.display='none'; });
+  var feed = document.getElementById('feed');
+  get('about.json').then(function(D){
+    document.getElementById('counts').textContent = num(D.entries) + ' entries. ' + num(D.corrections) + ' corrections with evidence.';
+    feed.innerHTML = D.feed.map(function(c){
+      var ch = (c.old ? '<s>' + esc(c.old) + '</s>' : '(nothing)') + ' → <b>' + esc(c.new || '(nothing)') + '</b>';
+      var why = c.why.length > 150 ? c.why.slice(0,147) + '…' : c.why;
+      return '<div class="row"><div><a href="#" data-id="' + esc(c.id) + '">' + esc(c.head) + '</a></div><div><span class="ch">' + ch + '</span> <span class="src">' + esc(c.when) + '</span><br><span class="why">' + esc(why) + '</span></div></div>';
+    }).join('');
+  }).catch(function(){});
+  feed.addEventListener('click', function(ev){ var a = ev.target.closest('a[data-id]'); if(a){ ev.preventDefault(); open(byId(a.textContent, a.getAttribute('data-id'))); openAbout(false); } });
+  var about = document.getElementById('about'), info = document.getElementById('info');
+  function openAbout(on){ about.hidden = !on; info.setAttribute('aria-expanded', on ? 'true' : 'false'); info.textContent = on ? '×' : 'i'; info.title = on ? 'Close' : 'About'; document.getElementById('rev').style.visibility = on ? 'hidden' : ''; }
+  info.addEventListener('click', function(ev){ ev.stopPropagation(); openAbout(about.hidden); });
+  document.addEventListener('keydown', function(ev){ if(ev.key==='Escape'){ openAbout(false); closePv(); } });
+  document.addEventListener('click', function(ev){ if(!about.hidden && !ev.target.closest('.about')) openAbout(false); });
+  function hash(){ var h = location.hash.slice(1); try { return decodeURIComponent(h); } catch(x){ return h; } }
+  var PAGES = null, lastEntry = null; get('pages.json').then(function(d){ PAGES = d; if(lastEntry) bookLink(lastEntry); }).catch(function(){});
+  function bookLink(e){
+    var a = document.getElementById('book'), z = document.getElementById('zoom'), n = e && e.page && PAGES ? PAGES[e.page] : null;
+    z.hidden = !(e && e.box);
+    if(!document.getElementById('scan').hidden){ if(e && e.box) showScan(e.box); else hideScan(); }
+    if(n === null || n === undefined){ a.hidden = true; return; }
+    a.href = 'https://archive.org/details/greekenglishlexi12lidd/page/n' + n; a.hidden = false;
+  }
+  // The printed page in our own viewer: the Archive's scan through its IIIF images, OpenSeadragon (BSD,
+  // vendor/) fetched the first time, opened at the entry's place on the page (site/places.json).
+  var SCAN = null;
+  function osd(){
+    if(window.OpenSeadragon) return Promise.resolve();
+    return new Promise(function(ok, no){ var s = document.createElement('script'); s.src = 'vendor/openseadragon.min.js'; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+  }
+  function hideScan(){ document.documentElement.removeAttribute('data-scan'); var z = document.getElementById('zoom'); document.getElementById('scan').hidden = true; z.setAttribute('aria-pressed', 'false'); z.textContent = 'see original'; }
+  function showScan(box){
+    var panel = document.getElementById('scan');
+    panel.hidden = false; document.documentElement.setAttribute('data-scan', '');
+    document.getElementById('zoom').setAttribute('aria-pressed', 'true'); document.getElementById('zoom').textContent = 'hide original';
+    document.getElementById('scanwhere').textContent = box[5] === 'b' ? 'the entry is about here, within a few lines' : box[5] === 'p' ? 'the entry is on this page' : 'the entry, marked';
+    osd().then(function(){
+      if(!SCAN) SCAN = OpenSeadragon({element: document.getElementById('osd'), drawer: 'canvas', imageLoaderLimit: 8, blendTime: 0.3,
+                                      showNavigationControl: false, maxZoomPixelRatio: 3, visibilityRatio: 0.3, gestureSettingsMouse: {clickToZoom: false}});
+      var scan = 'https://iiif.archive.org/image/iiif/3/greekenglishlexi12lidd%2fgreekenglishlexi12lidd_jp2.zip%2fgreekenglishlexi12lidd_jp2%2fgreekenglishlexi12lidd_' + ('000' + box[0]).slice(-4) + '.jp2';
+      // the view, a golden rectangle: the column's width across it, the entry's first line a line below
+      // its top (an entry is 2 lines at the median, 9 at the ninetieth percentile); one placed between
+      // found ones is within 6 lines of its place 9 times in 10, so the view starts 6 lines above it;
+      // the page comes in blurred first, its coarse tiles, and sharpens
+      var o = document.getElementById('osd'), y0 = box[5] === 'b' ? box[2] - 260 : box[2] - 60;
+      SCAN.addOnceHandler('open', function(){
+        var v = SCAN.viewport, page = SCAN.world.getItemAt(0), size = page.getContentSize(), x = box[1], w = box[3], y = Math.max(0, y0);
+        if(box[5] === 'p'){ x = 0; w = size.x; y = 0; }
+        SCAN.clearOverlays();
+        if(box[5] !== 'p'){ var el = document.createElement('div'); el.className = 'hl'; SCAN.addOverlay({element: el, location: page.imageToViewportRectangle(box[1], box[2], box[3], Math.min(box[4], box[5] === 'b' ? 86 : size.y))}); }
+        v.fitBounds(page.imageToViewportRectangle(x, y, w, w * o.clientHeight / o.clientWidth), true);
+      });
+      SCAN.open(scan + '/info.json');
+    }, hideScan);
+  }
+  document.getElementById('zoom').addEventListener('click', function(){ if(!document.getElementById('scan').hidden) hideScan(); else if(lastEntry && lastEntry.box) showScan(lastEntry.box); });
+  function fromHash(){
+    var want = hash(), at = want.lastIndexOf('@'), id = at > 0 ? want.slice(at + 1) : '';   // #λινοϋφικός@n63441: a homonym by its id (Codex 9)
+    if(id) want = want.slice(0, at);
+    var v = norm(want);
+    if(!want){ open(get('about.json').then(function(D){ return byId(D.featured.head, D.featured.id); })); return; }
+    open(letter(v).then(function(ix){
+      return (id && find(ix, function(t){ return t[2] === id; })) || find(ix, function(t){ return t[1] === want; }) || find(ix, function(t){ return t[0] === v; }) || find(ix, function(t){ return t[0].replace(/\d+$/, '') === v; });
+    }));
+  }
+  function step(d){
+    if(!current) return;
+    var row = current;
+    open(get('index/letters.json').then(function(list){
+      var files = list.map(function(x){ return x.file; }), f = 'other.json';
+      list.forEach(function(x){ if(x.letter && x.letter === row[0].charAt(0)) f = x.file; });
+      return get('index/' + f).then(function(ix){
+        var k = ix.indexOf(find(ix, function(t){ return t[2] === row[2]; })) + d;
+        if(k >= 0 && k < ix.length) return ix[k];
+        var n = files.indexOf(f) + d;
+        while(n >= 0 && n < files.length && !list[n].rows) n += d;
+        if(n < 0 || n >= files.length) return row;
+        return get('index/' + files[n]).then(function(nx){ return d > 0 ? nx[0] : nx[nx.length - 1]; });
+      });
+    }));
+  }
+  document.getElementById('prev').addEventListener('click', function(){ inReview() ? rstep(-1) : step(-1); });
+  document.getElementById('next').addEventListener('click', function(){ inReview() ? rstep(1) : step(1); });
+  document.addEventListener('keydown', function(ev){
+    if(document.activeElement === q || ev.metaKey || ev.ctrlKey || ev.altKey) return;
+    if(ev.key==='ArrowLeft') inReview() ? rstep(-1) : step(-1);
+    else if(ev.key==='ArrowRight') inReview() ? rstep(1) : step(1);
+    else if(inReview() && (ev.key==='y' || ev.key==='n') && opened){ if(V[opened.pv.getAttribute('data-key')] !== ev.key) setV(opened.pv.getAttribute('data-key'), ev.key); }   // a key never clears a verdict; the clicks toggle (second review 10)
+    else if(inReview() && (ev.key==='y' || ev.key==='n')){ var first = document.querySelector('.corrs .one:not(.y):not(.n)'); if(first){ setV(first.getAttribute('data-key'), ev.key); if(!document.querySelector('.corrs .one:not(.y):not(.n)')) rstep(1); } }
+  });
+  document.getElementById('rsend').addEventListener('click', function(){ submitV(); });
+  document.getElementById('rev').addEventListener('click', function(){
+    var root = document.documentElement;
+    if(root.hasAttribute('data-review')){ root.removeAttribute('data-review'); this.textContent = 'Proofread'; return; }
+    get('review.json').then(function(list){
+      R = list; root.setAttribute('data-review', ''); document.getElementById('rev').textContent = 'Done';
+      if(current) show(current);   // check mode starts where you are
+    }).catch(function(){});
+  });
+  entry.addEventListener('click', function(ev){ var b = ev.target.closest('.v button'); if(!b) return; setV(b.closest('[data-key]').getAttribute('data-key'), b.classList.contains('y') ? 'y' : 'n'); });
+  document.querySelector('.nav').addEventListener('click', function(ev){ var b = ev.target.closest('.v button'); if(!b) return; setV(b.closest('[data-key]').getAttribute('data-key'), b.classList.contains('y') ? 'y' : 'n'); });
+  var fb = document.createElement('div'); fb.id = 'flagbox';
+  fb.innerHTML = '<input type="text" placeholder="a note, if you like"><button type="button">flag</button>'; document.body.appendChild(fb);
+  var picked = '';
+  function hideFlag(){ fb.style.display = 'none'; picked = ''; }
+  entry.addEventListener('mouseup', function(){
+    if(!inReview() || !current) return;
+    var sel = window.getSelection(), t = sel && !sel.isCollapsed ? sel.toString().replace(/\s+/g, ' ').trim() : '';
+    if(!t || t.length > 300 || !sel.anchorNode || !entry.querySelector('.etext').contains(sel.anchorNode)) return;
+    var r = sel.getRangeAt(0).getBoundingClientRect();
+    picked = t; fb.querySelector('input').value = '';
+    fb.style.left = Math.max(8, r.left + window.scrollX) + 'px'; fb.style.top = (r.bottom + window.scrollY + 6) + 'px'; fb.style.display = 'flex';
+  });
+  function addFlag(){
+    if(!picked || !current) return;
+    F['flag|' + current[2] + '|' + Date.now()] = {id: current[2], head: current[1], text: picked, note: fb.querySelector('input').value.trim()};
+    M[current[2]] = current; saveF(); saveV(); hideFlag(); flagList(); rbar();
+    var sel = window.getSelection(); if(sel) sel.removeAllRanges();
+  }
+  fb.querySelector('button').addEventListener('click', addFlag);
+  fb.querySelector('input').addEventListener('keydown', function(ev){ if(ev.key === 'Enter') addFlag(); else if(ev.key === 'Escape') hideFlag(); ev.stopPropagation(); });
+  document.addEventListener('mousedown', function(ev){ if(!ev.target.closest('#flagbox')) hideFlag(); });
+  entry.addEventListener('click', function(ev){ var b = ev.target.closest('[data-flag]'); if(b){ delete F[b.getAttribute('data-flag')]; saveF(); flagList(); rbar(); } });
+  entry.addEventListener('keydown', function(ev){ var c = ev.target.closest && ev.target.closest('cite.rd'); if(c && (ev.key === 'Enter' || ev.key === ' ')){ ev.preventDefault(); togglePv(c); } });
+  var fsel = document.getElementById('font'), hsel = document.getElementById('hl');
+  function has(sel, v){ for(var i = 0; i < sel.options.length; i++){ if(sel.options[i].value === v) return true; } return false; }
+  function applyPrefs(){ document.documentElement.style.setProperty('--font', fsel.value); document.documentElement.setAttribute('data-hl', hsel.value); try{ localStorage.setItem('lsjai.font', fsel.value); localStorage.setItem('lsjai.hl', hsel.value); }catch(err){} }
+  fsel.addEventListener('change', applyPrefs); hsel.addEventListener('change', applyPrefs); applyPrefs();
+  window.addEventListener('hashchange', function(){ var h = hash(); if(!current || (h !== current[1] && h !== current[1] + '@' + current[2])) fromHash(); });
+  fromHash();
+})();
+</script>
+</body>
+</html>
