@@ -1,0 +1,20 @@
+# Citations whose visible text was corrected but whose n="Perseus:abo:..." could not be remade from the new text by the rule
+# of tools/apply.py (31 Oct 2026): the n is left as it was and listed here for a pass with the editions to hand.
+entry	n as it stands	text now
+n401	<bibl n="Perseus:abo:tlg,0008,001:5:21c" default="NO"><author>Ath.</author> 5.21c</bibl>	<author>Ath.</author> 5.210
+n5867	<bibl n="Perseus:abo:tlg,4085,001:1" default="NO"><author>Hsch.</author> 1</bibl>	<author>Hsch.</author> l
+n7637	<bibl n="Perseus:abo:tlg,0363,007:150" default="NO">150</bibl>	15°
+n9338	<bibl n="Perseus:abo:tlg,4013,004:11:4:540" default="NO">11.4.540</bibl>	Il.4.540
+n11305	<bibl n="Perseus:abo:tlg,0543,001:11">11</bibl>	II
+n12183	<bibl n="Perseus:abo:tlg,2034,008:1" default="NO"><author>Porph.</author> <title>Sent.</title> 1</bibl>	<author>Porph.</author> <title>Sent.</title> l
+n13073	<bibl n="Perseus:abo:tlg,0093,004:11:2:319" default="NO">11.2.319</bibl>	Il.2.319
+n16137	<bibl n="Perseus:abo:tlg,0563,001:33:5" default="NO"><author>Id.</author> 4.5 [33.5.a]</bibl>	<author>Id.</author> 4.5 
+n32075	<bibl n="Perseus:abo:tlg,1204,001:11:4:109" default="NO">11.4.109</bibl>	Il.4.109
+n34836	<bibl n="Perseus:abo:tlg,1286,001:11:8:168" default="NO">11.8.168</bibl>	Il.8.168
+n39079	<bibl n="Perseus:abo:tlg,0653,001:11:21:166" default="NO">11.21.166</bibl>	Il.21.166
+n48234	<bibl n="Perseus:abo:tlg,2001,016:21c" default="NO"><author>Them.</author> <title>Or.</title> 16.21c</bibl>	<author>Them.</author> <title>Or.</title> 16.210
+n55429	<bibl n="Perseus:abo:tlg,0008,001:1:1c" default="NO"><author>Ath.</author> 1.1c</bibl>	<author>Ath.</author> 1.10
+n66343	<bibl n="Perseus:abo:tlg,4085,001:11:1:250" default="NO">11.1.250</bibl>	Il.1.250
+n66354	<bibl n="Perseus:abo:tlg,0410,001:11:13:361" default="NO">11.13.361</bibl>	Il.13.361
+n66384	<bibl n="Perseus:abo:tlg,4085,001:11:16:231" default="NO">11.16.231</bibl>	Il.16.231
+n66389	<bibl n="Perseus:abo:tlg,0579,011:11:23:521" default="NO">11.23.521</bibl>	Il.23.521

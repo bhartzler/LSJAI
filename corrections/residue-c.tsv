@@ -1,0 +1,35 @@
+file	entry	headword	id	span	printed	reference	certainty	held because	the rule's reason
+greatscott02.xml	n494	ἄγημα	C00001	247:2.8.3	2.8.3	Perseus:abo:tlg,0074,001:2:8:3	5	would stand in a <quote>, where the dictionary has no bibl	would stand in a <quote>, where the dictionary has no bibl
+greatscott04.xml	n5232	ἄμη	C00020	36:‹IG› 1.225e	‹IG› 1.225e	IG 1.225e	5	would cross a <i>, which runs on past the citation	would hold a <i>, which a bibl does not
+greatscott05.xml	n6380	ἀναγραφεύς	C00026	132:‹IG› 2.192c	‹IG› 2.192c	IG 2.192c	5	would cross a <i>, which runs on past the citation	would hold a <i>, which a bibl does not
+greatscott05.xml	n7441	ἀνασάξιμον	C00032	90:1078b	1078b	IG 2.1078b	5	would cross a <i>, which runs on past the citation	would hold a <i>, which a bibl does not
+greatscott06.xml	n8340	ἀνέπαφος	C00036	151:‹IG› 2.584c	‹IG› 2.584c	IG 2.584c	5	would cross a <i>, which runs on past the citation	would hold a <i>, which a bibl does not
+greatscott06.xml	n9787	ἀντιάω	C00039	593:12.356	12.356	Perseus:abo:tlg,0012,001:12:356	5	would stand in a <quote>, where the dictionary has no bibl	would stand in a <quote>, where the dictionary has no bibl
+greatscott09.xml	n14695	ἀρακτῆρα	C00060	38:«Id.»s.v. ἀράη	«Id.»s.v. ἀράη	Hsch. s.v. ἀράη	5	would cross a <sense>, which runs on past the citation	would hold a <sense>, which a bibl does not
+greatscott09.xml	n15160	ἀρκεθέωρος	C00066	26:‹IG› 2.181a	‹IG› 2.181a	IG 2.181a	5	would cross a <i>, which runs on past the citation	would hold a <i>, which a bibl does not
+greatscott10.xml	n16290	Ἀσκληπιός	C00072	261:‹IG› 2.617b	‹IG› 2.617b	IG 2.617b	5	would cross a <i>, which runs on past the citation	would hold a <i>, which a bibl does not
+greatscott18.xml	n27378	διπλῆ	C00140	230:‹IG› 14.1054b	‹IG› 14.1054b	IG 14.1054b	5	would cross a <i>, which runs on past the citation	would hold a <i>, which a bibl does not
+greatscott24.xml	n37644	ἐξούλης	C00184	168:D. 30	D. 30 and 31 tit.	D. 30 and 31 tit.	5	would hold a <editor>, which the dictionary's bibls do not	would hold a <editor>, which a bibl does not
+greatscott32.xml	n46968	ἡμεράλωψ	C00224	91:«Simon.» Jan. s.v. nictilopa	«Simon.» Jan. s.v. nictilopa	Simon. Jan. s.v. nictilopa	5	would cross a <sense>, which runs on past the citation	would hold a <abbr>, which a bibl does not
+greatscott32.xml	n47486	ἠπιοδώτης	C00230	57:«Orph.»Εὐχή 37	«Orph.»Εὐχή 37	Orph. Εὐχή 37	5	would hold a <cit>, a <quote>, which the dictionary's bibls do not	would hold a <cit>, which a bibl does not
+greatscott34.xml	n48507	θεσμοδότης	C00233	65:«Orph.»Εὐχή 25	«Orph.»Εὐχή 25	Orph. Εὐχή 25	5	would hold a <cit>, a <quote>, which the dictionary's bibls do not	would hold a <cit>, which a bibl does not
+greatscott36.xml	n50099	ἱεροσκόπος	C00242	52:«Orph.»Εὐχή 23	«Orph.»Εὐχή 23	Orph. Εὐχή 23	5	would hold a <cit>, a <quote>, which the dictionary's bibls do not; the <cit> before it closes inside it too	would hold a <cit>, which a bibl does not
+greatscott38.xml	n52550	καλάπους	C00257	105:‹Edict.Diocl.› 9.1a	‹Edict.Diocl.› 9.1a	Edict.Diocl. 9.1a	5	would cross a <i>, which runs on past the citation	would hold a <i>, which a bibl does not
+greatscott44.xml	n62893	λήκυθος	C00322	295:‹CIG› 8346k.	‹CIG› 8346k	CIG 8346k	5	would cross a <i>, which runs on past the citation	would hold a <i>, which a bibl does not
+greatscott44.xml	n63227	λιθουργεῖον	C00324	35:‹IG› 2.1123b	‹IG› 2.1123b	IG 2.1123b	5	would cross a <i>, which runs on past the citation	would hold a <i>, which a bibl does not
+greatscott47.xml	n66608	Μεταγείτνιος	C00345	420:‹IG› 2(2).1672.34	‹IG› 2(2).1672.34	IG 2(2).1672.34	5	would stand in a <foreign>, where the dictionary has no bibl	would stand in a <foreign>, where the dictionary has no bibl
+greatscott48.xml	n68248	μοδίολος	C00351	51:‹Edict.Diocl.› Geronthr. 15.3	‹Edict.Diocl.› Geronthr. 15.3	Edict.Diocl. Geronthr. 15.3	5	would hold a <placeName>, which the dictionary's bibls do not	would hold a <placeName>, which a bibl does not
+greatscott48.xml	n68980	μύδιον	C00353	35:«Fest.» s.v. myoparo	«Fest.» s.v. myoparo	Fest. s.v. myoparo	5	would cross a <i>, which runs on past the citation	would hold a <abbr>, which a bibl does not
+greatscott50.xml	n71180	νυκτηγρεσία	C00362	70:«Fest.» s.v. egretus	«Fest.» s.v. egretus	Fest. s.v. egretus	5	would cross a <i>, which runs on past the citation	would hold a <abbr>, which a bibl does not
+greatscott56.xml	n77301	πανδέκτης	C00399	283:‹Const.› Δέδωκεν 1	«Id.» ‹Const.› Δέδωκεν 1	Justinian Const. Δέδωκεν 1	4	would hold a <cit>, a <quote>, which the dictionary's bibls do not	would hold a <cit>, which a bibl does not
+greatscott59.xml	n82978	πήμων	C00429	31:«Orph.» Εὐχή 31	«Orph.» Εὐχή 31	Orph. Εὐχή 31	5	would hold a <cit>, a <quote>, which the dictionary's bibls do not	would hold a <cit>, which a bibl does not
+greatscott61.xml	n87968	προμάμμη	C00454	42:‹IG› 14.756a	‹IG› 14.756a	IG 14.756a	5	would cross a <i>, which runs on past the citation	would hold a <i>, which a bibl does not
+greatscott63.xml	n90137	προστεγαστήρ	C00461	44:Delph. 3(5).26	Delph. 3(5).26 i A 36	Delph. 3(5).26 i A 36	5	would hold a <placeName>, which the dictionary's bibls do not	would hold a <placeName>, which a bibl does not
+greatscott67.xml	n92588	ῥόδινος	C00482	158:‹Edict.Diocl.› Delph. 6	‹Edict.Diocl.› Delph. 6	Edict.Diocl. Delph. 6	5	would hold a <placeName>, which the dictionary's bibls do not	would hold a <placeName>, which a bibl does not
+greatscott72.xml	n100440	συνευαστήρ	C00511	39:«Orph.»Εὐχή 34	«Orph.»Εὐχή 34	Orph. Εὐχή 34	4	would hold a <cit>, a <quote>, which the dictionary's bibls do not	would hold a <cit>, which a bibl does not
+greatscott74.xml	n103411	τετρακίων	C00535	49:«Orph.»Εὐχή 39	«Orph.»Εὐχή 39	Orph. Εὐχή 39	4	would hold a <cit>, a <quote>, which the dictionary's bibls do not	would hold a <cit>, which a bibl does not
+greatscott75.xml	n105779	τρωγλῖτις	C00552	37:‹Edict.Diocl.› Delph. 21	‹Edict.Diocl.› Delph. 21	Edict.Diocl. Delph. 21	5	would hold a <placeName>, which the dictionary's bibls do not	would hold a <placeName>, which a bibl does not
+greatscott83.xml	n114419	χορευτής	C00590	300:«Orph.» Εὐχή 9	«Orph.» Εὐχή 9	Orph. Εὐχή 9	5	would hold a <cit>, a <quote>, which the dictionary's bibls do not	would hold a <cit>, which a bibl does not
+greatscott83.xml	n114455	χοροκιθαρεύς	C00594	61:‹CIG› 2758f	‹CIG› 2758f	CIG 2758f	5	would cross a <i>, which runs on past the citation	would hold a <i>, which a bibl does not
+greatscott83.xml	n114778	χρυσάορος	C00599	463:«St.Byz.» s.v. χρῡσᾱορίς	«St.Byz.» s.v. χρῡσᾱορίς	St.Byz. s.v. χρῡσᾱορίς	5	would cross a <orth>, which runs on past the citation	would hold a <abbr>, which a bibl does not
+greatscott84.xml	n115872	ψυχαγωγή	C00606	30:‹Cod.Just.› 8.10.12.6b	‹Cod.Just.› 8.10.12.6b	Cod.Just. 8.10.12.6b	5	would cross a <i>, which runs on past the citation	would hold a <i>, which a bibl does not

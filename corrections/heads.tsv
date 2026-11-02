@@ -84,3 +84,40 @@ line	batch	status	why	old	new	pass
 64986	to10	head kept	the text μακρόθι did not read as orth_orig μάκρο-θι before; now μακρό-θι			29 Oct 2026, the last rounds
 65586	to10	head kept	the text ματίζω did not read as orth_orig μᾰτιζω before; now μᾰτίζω			29 Oct 2026, the last rounds
 68056	owner	head followed	orth_orig μίκρο-θεν -> μικρό-θεν	μίκροθεν	μικρόθεν	29 Oct 2026, the last rounds
+30262	recut-31oct	head kept	the text ἐγερσίγελως did not read as orth_orig ἐγερσῐ-γελως before; now ἐγερσῐ-γέλως			31 Oct 2026, the night of 31 Oct
+30749	recut-31oct	head kept	the text ἐγρηγορτέον did not read as orth_orig ἐγρήγορ-τέον before; now ἐγρηγορ-τέον			31 Oct 2026, the night of 31 Oct
+68343	recut-31oct	head followed	orth_orig μιλτο-πάρηος -> μιλτο-πάρῃος	μιλτοπάρηος	μιλτοπάρῃος	31 Oct 2026, the night of 31 Oct
+69607	recut-31oct	head followed	orth_orig μῠῖτις -> μῠῗτις	μυῖτις	μυῗτις	31 Oct 2026, the night of 31 Oct
+70170	recut-31oct	head kept	a letter entry: its text is the letter; orth_orig ν -> Ν ν	ν	Ν ν	31 Oct 2026, the night of 31 Oct
+71176	recut-31oct	head kept	the text νήϊος did not read as orth_orig νηϊος before; now νήϊος			31 Oct 2026, the night of 31 Oct
+72890	recut-31oct	head kept	the text οἰκονόμος did not read as orth_orig οἰκόνομ-ος before; now οἰκονόμ-ος			31 Oct 2026, the night of 31 Oct
+73999	recut-31oct	head kept	the text ὁμηγύριος did not read as orth_orig ὁμηγῠρ-ιος before; now Ὁμηγῠρ-ιος			31 Oct 2026, the night of 31 Oct
+74376	recut-31oct	head followed	orth_orig ὅμο-στιξ -> ὁμό-στιξ	ὅμοστιξ	ὁμόστιξ	31 Oct 2026, the night of 31 Oct
+74837	recut-31oct	head kept	the text ὀξύκερως did not read as orth_orig ὀξῠ-κερως before; now ὀξῠ-κέρως			31 Oct 2026, the night of 31 Oct
+75615	recut-31oct	head followed	orth_orig Ὀρι-βάτης -> ὀρι-βάτης	Ὀριβάτης	ὀριβάτης	31 Oct 2026, the night of 31 Oct
+75619	recut-31oct	head followed	orth_orig ὀρῑγᾰν-ίων -> Ὀρῑγᾰν-ίων	ὀριγανίων	Ὀριγανίων	31 Oct 2026, the night of 31 Oct
+75646	recut-31oct	head kept	the text ὀρίπλαγκτος did not read as orth_orig ὀρι-πλαγκτος before; now ὀρί-πλαγκτος			31 Oct 2026, the night of 31 Oct
+76271	recut-31oct	head followed	orth_orig ὄττεο -> ὅττεο	ὄττεο	ὅττεο	31 Oct 2026, the night of 31 Oct
+76489	recut-31oct	head kept	the text οὐρανόθι did not read as orth_orig οὐρᾰνο-θῐ before; now οὐρᾰνό-θῐ			31 Oct 2026, the night of 31 Oct
+77163	recut-31oct	head followed	orth_orig παίδο-θεν -> παιδό-θεν	παίδοθεν	παιδόθεν	31 Oct 2026, the night of 31 Oct
+77972	recut-31oct	head kept	the text πάνημος did not read as orth_orig πᾰν-ημος before; now Πά̆ν-ημος			31 Oct 2026, the night of 31 Oct
+77988	recut-31oct	head kept	the text πάνθηλυς did not read as orth_orig Πάν-θηλυς before; now πάν-θηλυς			31 Oct 2026, the night of 31 Oct
+81518	recut-31oct	head followed	orth_orig περαᾶν -> περάαν	περαᾶν	περάαν	31 Oct 2026, the night of 31 Oct
+81529	recut-31oct	head kept	the text Περαίτης did not read as orth_orig Περᾱῑτης before; now Περᾱΐ̄της			31 Oct 2026, the night of 31 Oct
+81926	recut-31oct	head followed	orth_orig περιήδη -> περιῄδη	περιήδη	περιῄδη	31 Oct 2026, the night of 31 Oct
+83106	recut-31oct	head kept	the text περιχαλκίζω did not read as orth_orig περιχαλκ-ιζω before; now περιχαλκ-ίζω			31 Oct 2026, the night of 31 Oct
+83240	recut-31oct	head followed	orth_orig περσ-ίζω -> Περσ-ίζω	περσίζω	Περσίζω	31 Oct 2026, the night of 31 Oct
+83254	recut-31oct	head followed	orth_orig περσονομέομαι -> Περσονομέομαι	περσονομέομαι	Περσονομέομαι	31 Oct 2026, the night of 31 Oct
+83334	recut-31oct	head kept	the text πετηνίς did not read as orth_orig πετηνις· before; now πετηνίς·			31 Oct 2026, the night of 31 Oct
+83528	recut-31oct	head followed	orth_orig πηλο-πλάτων -> Πηλο-πλάτων	πηλοπλάτων	Πηλοπλάτων	31 Oct 2026, the night of 31 Oct
+83745	recut-31oct	head kept	the text πιλοφόρος did not read as orth_orig πῑλόφορ-ος before; now πῑλοφόρ-ος			31 Oct 2026, the night of 31 Oct
+86086	recut-31oct	head followed	orth_orig πολύ-φονος -> πολυ-φόνος	πολύφονος	πολυφόνος	31 Oct 2026, the night of 31 Oct
+86888	recut-31oct	head kept	the text πρεσβυτικός did not read as orth_orig πρεσβ-ϋτικός before; now πρεσβ-ῡτικός			31 Oct 2026, the night of 31 Oct
+87067	recut-31oct	head kept	the text προαμύνομαι did not read as orth_orig προᾰμυνομαι before; now προᾰμύνομαι			31 Oct 2026, the night of 31 Oct
+87674	recut-31oct	head kept	the text προδούλειαι did not read as orth_orig προδουλ-ει-αι before; now προδουλ-εῖαι			31 Oct 2026, the night of 31 Oct
+88562	recut-31oct	head followed	orth_orig προμᾰχ-εῖα -> Προμᾰχ-εῖα	προμαχεῖα	Προμαχεῖα	31 Oct 2026, the night of 31 Oct
+88595	recut-31oct	head kept	the text Προμηθεύς did not read as orth_orig προμηθ-εύς before; now Προμηθ-εύς			31 Oct 2026, the night of 31 Oct
+92606	recut-31oct	head followed	orth_orig Ϟ ϟ -> Ϙ ϙ	Ϟ ϟ	Ϙ ϙ	31 Oct 2026, the night of 31 Oct
+93585	recut-31oct	head followed	orth_orig σαββᾰτ-ίζω -> Σαββᾰτ-ίζω	σαββατίζω	Σαββατίζω	31 Oct 2026, the night of 31 Oct
+94111	recut-31oct	head followed	orth_orig Σεβασμ-ιότης -> σεβασμ-ιότης	Σεβασμιότης	σεβασμιότης	31 Oct 2026, the night of 31 Oct
+94166	recut-31oct	head kept	the text σειρίασις did not read as orth_orig σειρι-ᾱσις before; now σειρί-ᾱσις			31 Oct 2026, the night of 31 Oct

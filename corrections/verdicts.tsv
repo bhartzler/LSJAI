@@ -1,0 +1,17 @@
+issue	when	kind	entry	headword	key	verdict	note
+1	2026-10-31	correction	n58929	Κοντοπορεία	n58929|r1103	right	κ → Κ
+1	2026-10-31	correction	n58929	Κοντοπορεία	n58929|r1104	right	(nothing) → Κοντοπορία
+1	2026-10-31	correction	n58939	Κονώνειος	n58939|r1105	right	l → I
+1	2026-10-31	correction	n59034	κόπτω	n59034|r1106	right	ιρὴ → ίρη
+1	2026-10-31	correction	n59034	κόπτω	n59034|r1107	right	ἐ → ἔ
+1	2026-10-31	page	n58840	κόμπος	page|n58840	right	
+1	2026-10-31	page	n58850	κομψεύω	page|n58850	right	
+1	2026-10-31	page	n449	ἀγέμιστος	page|n449	right	
+1	2026-10-31	page	n538	ἀγκάλη	page|n538	right	
+1	2026-10-31	page	n59035	κοπώδης	page|n59035	right	
+1	2026-10-31	page	n59045	κορακήσιον	page|n59045	right	
+1	2026-10-31	page	n58929	Κοντοπορεία	page|n58929	right	
+1	2026-10-31	page	n59034	κόπτω	page|n59034	right	
+1	2026-10-31	flag	n59045	κορακήσιον	flag|n59045	look	selected: PCair.Zen. 12.33 (iii B. C.). · note: can you find this?
+1	2026-10-31	flag	n58929	Κοντοπορεία	flag|n58929	look	selected: Plb. 16.16.4. · note: Word is there but doesn't highlight.
+1	2026-10-31	flag	n58929	Κοντοπορεία	flag|n58929	look	selected: Ptol.Euerg. 6 · note: Still not linked to the correct location.
