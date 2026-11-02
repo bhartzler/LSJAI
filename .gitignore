@@ -1,0 +1,26 @@
+docs/snippets/loeb/
+docs/snippets/digiliblt/
+docs/snippets/translations/
+__pycache__/
+
+# The cut's collection folders are working files, not published; the collation joins them into docs/snippets/text, which the repository carries with the open translations
+docs/snippets/greek/
+docs/snippets/perseus/
+docs/snippets/first1k/
+docs/snippets/latin/
+docs/snippets/papyri/
+docs/snippets/inscriptions/
+site/stats-private.json
+
+# The collation's full tree, on this machine only
+docs/snippets/text-all/
+
+# The board, the status page, and the numbers: working files, not published
+docs/status.html
+site/status.html
+docs/board.txt
+docs/numbers.txt
+docs/alignment.tsv
+
+tools/tlg_works.tsv
+docs/stats.json
